@@ -1,33 +1,35 @@
-let deck1 = []
-let deck2 = []
-let deck3 = []
-let deck4 = []
-let deck5 = []
-let deck6 = []
-let deck7 = []
-let deck8 = []
+let playingDeckA = []
+let playedCardA = []
+let hostageDeckA = []
+let collectionDeckA = []
+
+let playingDeckB = []
+let playedCardB = []
+let hostageDeckB = []
+let collectionDeckB = []
+
 let startingDeck = []
 
-let deck1El = document.getElementById('deck1')
-let deck2El = document.getElementById('deck2')
-let deck3El = document.getElementById('deck3')
-let deck4El = document.getElementById('deck4')
-let deck5El = document.getElementById('deck5')
-let deck6El = document.getElementById('deck6')
-let deck7El = document.getElementById('deck7')
-let deck8El = document.getElementById('deck8')
+let deck1El = document.getElementById('playingDeckA')
+let deck2El = document.getElementById('playedCardA')
+let deck3El = document.getElementById('hostageDeckA')
+let deck4El = document.getElementById('collectionDeckA')
+let deck5El = document.getElementById('playingDeckB')
+let deck6El = document.getElementById('playedCardB')
+let deck7El = document.getElementById('hostageDeckB')
+let deck8El = document.getElementById('collectionDeckB')
 
 document.getElementById(`startBtn`).addEventListener(`click`, function() {
   shuffleDeck(startingDeck)
   handleStart()
-  console.log(deck1)
-  console.log(deck5) 
+  console.log(playingDeckA)
+  console.log(playingDeckB) 
 })
-document.getElementById('nextTurnBtn').addEventListener(`click`, function () {
-  playCards()
+document.getElementById('nextTurnBtn').addEventListener(`click`, function() {
+  playCardsOrWin()
   compareCards()
-  console.log(deck2)
-  console.log(deck6)
+  console.log(playedCardA)
+  console.log(playedCardB)
   
   
 })
@@ -111,43 +113,65 @@ function handleStart() {
   // while (startingDeck.length > 26) {
   //   let randIdx = Math.floor(Math.random()*startingDeck.length)
   //   let cardPicked = startingDeck.splice(randIdx, 1)
-  //   deck1.push(cardPicked)
+  //   playingDeckA.push(cardPicked)
   // }
   // while (startingDeck.length > 0) {
   //   let randIdx = Math.floor(Math.random()*startingDeck.length)
   //   let cardPicked = startingDeck.splice(randIdx, 1)
-  //   deck5.push(cardPicked)
+  //   playingDeckB.push(cardPicked)
   // }
-  deck1 = startingDeck.splice(0,26)
-  deck5 = startingDeck.splice(0,26)
+  playingDeckA = startingDeck.splice(0,26)
+  playingDeckB = startingDeck.splice(0,26)
 }
 
-function playCards() {
-  if (deck1.length !== 0 && deck5.length !== 0) {
-    deck2 = deck1.splice(0,1)
-    deck6 = deck5.splice(0,1)
-  } else if (deck1.length === 0 && deck5.length !== 0) {
+function playCardsOrWin() {
+  if (playingDeckA.length !== 0 && playingDeckB.length !== 0) {
+    // playedCardA = playingDeckA.splice(0,1)
+    // playedCardB = playingDeckB.splice(0,1)
+    playCard()
+  } else if (playingDeckA.length === 0 && playingDeckB.length !== 0) {
     // render message playerB wins
-  } else if (deck1.length !== 0 || deck5.length === 0) {
+  } else if (playingDeckA.length !== 0 || playingDeckB.length === 0) {
     // render message playerA wins
   } else {
     // render message tie game
   }
 }
 function compareCards() {
-  if (deck2[0].value > deck6[0].value) {
-    const wonCard = deck6.splice(0,1)
-    deck4.splice(deck4.length-1, 0, wonCard)
-  } else if (deck6[0].value > deck2[0].value) {
-    const wonCard = deck2.splice(0,1)
-    deck8.splice(deck8.length-1, 0, wonCard)
+  if (playedCardA[0].value > playedCardB[0].value) {
+    const wonCard = playedCardB.splice(0,1)
+    collectionDeckA.splice(0, 0, wonCard)
+  } else if (playedCardB[0].value > playedCardA[0].value) {
+    const wonCard = playedCardA.splice(0,1)
+    collectionDeckB.splice(0, 0, wonCard)
   } else {
 // War!
+    // let hostagesA = playingDeckA.splice(0,3)
+    // let hostagesB = playingDeckB.splice(0,3)
+    // hostageDeckA.splice(0,0,hostagesA,playedCardA[0])
+    // hostageDeckB.splice(0,0,hostagesB,playedCardB[0])
+    // playedCardA.pop()
+    // playedCardB.pop()
+    hostages()
+    playCard()
   }
-  
 }
 
 
 function handleReset() {
 
+}
+
+function playCard() {
+  playedCardA = playingDeckA.splice(0,1)
+  playedCardB = playingDeckB.splice(0,1)
+}
+
+function hostages(a,b) {    
+  let hostagesA = playingDeckA.splice(0,3)
+  let hostagesB = playingDeckB.splice(0,3)
+  hostageDeckA.splice(0,0,hostagesA,playedCardA[0])
+  hostageDeckB.splice(0,0,hostagesB,playedCardB[0])
+  playedCardA.pop()
+  playedCardB.pop()
 }
