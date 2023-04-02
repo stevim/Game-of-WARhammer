@@ -84,8 +84,9 @@ document.getElementById(`startBtn`).addEventListener(`click`, function() {
   console.log(playingDeckA)
   console.log(playingDeckB) 
 })
+
 document.getElementById('nextTurnBtn').addEventListener(`click`, function() {
-  playCardsOrEndGame()
+  playCard()
   compareCards()
   
   console.log(playedCardA)
@@ -93,8 +94,8 @@ document.getElementById('nextTurnBtn').addEventListener(`click`, function() {
 
   console.log(collectionDeckA)
   console.log(collectionDeckB)
-  
 })
+
 document.getElementById('resetBtn').addEventListener(`click`, function() {
   handleReset()
 })
@@ -117,17 +118,6 @@ function handleStart() {
   playingDeckB = startingDeck.splice(0,26)
 }
 
-function playCardsOrEndGame() {
-  // if (playingDeckA.length !== 0 && playingDeckB.length !== 0) {
-    playCard()
-  // } else if (playingDeckA.length === 0 && playingDeckB.length !== 0) {
-  //   // render message playerB wins
-  // } else if (playingDeckA.length !== 0 && playingDeckB.length === 0) {
-  //   // render message playerA wins
-  // } else {
-  //   // render message tie game
-  // }
-}
 function compareCards() {
   if (playedCardA[0].value > playedCardB[0].value) {
     playerAWins()
@@ -144,8 +134,16 @@ function compareCards() {
     } else if (playedCardA[0].value < playedCardB[0].value) {
     playerBWins()
     } else { 
+      // Double War!
       supplyHostages()
       playCard()
+      if (playedCardA[0].value > playedCardB[0].value) {
+        playerAWins()
+        } else if (playedCardA[0].value < playedCardB[0].value) {
+        playerBWins()
+        } else {
+          // Triple War aka Tie
+        }
     }
   }
 }
@@ -153,10 +151,46 @@ function compareCards() {
 function handleReset() {
 
 }
-
 function playCard() {
-  playedCardA = playingDeckA.splice(0,1)
-  playedCardB = playingDeckB.splice(0,1)
+  if (playingDeckA.length !== 0 && playingDeckB.length !== 0) {
+    playedCardA = playingDeckA.splice(0,1)
+    playedCardB = playingDeckB.splice(0,1)
+  } else if (playingDeckA.length !== 0 && playingDeckB.length === 0) {
+    shuffleCollectionDeckB()
+
+  } else if (playingDeckA.length === 0 && playingDeckB.length !== 0) {
+    shuffleCollectionDeckA()
+
+  } else {
+    // render message tie game
+  }
+}
+
+function shuffleCollectionDeckA() {
+  if (collectionDeckA.length === 0) {
+    bWinsGame()
+  } else {
+    shuffleDeck(collectionDeckA)
+    playingDeckA = collectionDeckA.splice(0,collectionDeckA.length)
+  }
+  
+}
+function shuffleCollectionDeckB() {
+  if (collectionDeckB === 0) {
+    aWinsGame()
+  } else {
+    shuffleDeck(collectionDeckB)
+    playingDeckB = collectionDeckB.splice(0,collectionDeckB.length)
+  }
+}
+
+
+function aWinsGame() {
+  
+}
+
+function bWinsGame() {
+
 }
 
 function supplyHostages() {    
