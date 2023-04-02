@@ -19,6 +19,9 @@ let deck6El = document.getElementById('playedCardB')
 let deck7El = document.getElementById('hostageDeckB')
 let deck8El = document.getElementById('collectionDeckB')
 
+const aWins = playedCardA[0].value > playedCardB[0].value
+const bWins = playedCardA[0].value < playedCardB[0].value
+
 document.getElementById(`startBtn`).addEventListener(`click`, function() {
   shuffleDeck(startingDeck)
   handleStart()
@@ -138,12 +141,15 @@ function playCardsOrWin() {
   }
 }
 function compareCards() {
-  if (playedCardA[0].value > playedCardB[0].value) {
-    const wonCard = playedCardB.splice(0,1)
-    collectionDeckA.splice(0, 0, wonCard)
-  } else if (playedCardB[0].value > playedCardA[0].value) {
-    const wonCard = playedCardA.splice(0,1)
-    collectionDeckB.splice(0, 0, wonCard)
+  if (aWins) {
+    // const wonCard = playedCardB.splice(0,1)
+    // collectionDeckA.splice(0, 0, wonCard)
+    playerAWins()
+
+  } else if (bWins) {
+    // const wonCard = playedCardA.splice(0,1)
+    // collectionDeckB.splice(0, 0, wonCard)
+    playerBWins()
   } else {
 // War!
     // let hostagesA = playingDeckA.splice(0,3)
@@ -154,6 +160,11 @@ function compareCards() {
     // playedCardB.pop()
     hostages()
     playCard()
+    if (aWins) {
+
+    } else if (bWins) {
+    } else { 
+    }
   }
 }
 
@@ -167,11 +178,23 @@ function playCard() {
   playedCardB = playingDeckB.splice(0,1)
 }
 
-function hostages(a,b) {    
+function hostages() {    
   let hostagesA = playingDeckA.splice(0,3)
   let hostagesB = playingDeckB.splice(0,3)
   hostageDeckA.splice(0,0,hostagesA,playedCardA[0])
   hostageDeckB.splice(0,0,hostagesB,playedCardB[0])
   playedCardA.pop()
   playedCardB.pop()
+}
+
+function playerAWins() {
+  const wonCard = playedCardB.splice(0,1)
+  const ownCard = playedCardA.splice(0,1)
+  collectionDeckA.splice(0, 0, wonCard, ownCard)
+}
+
+function playerBWins() {
+  const wonCard = playedCardA.splice(0,1)
+  const ownCard = playedCardB.splice(0,1)
+  collectionDeckB.splice(0, 0, wonCard, ownCard)
 }
