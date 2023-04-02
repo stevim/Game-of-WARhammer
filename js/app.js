@@ -135,8 +135,16 @@ function playCards() {
   }
 }
 function compareCards() {
+  if (deck2[0].value > deck6[0].value) {
+    const wonCard = deck6.splice(0,1)
+    deck4.splice(deck4.length-1, 0, wonCard)
+  } else if (deck6[0].value > deck2[0].value) {
+    const wonCard = deck2.splice(0,1)
+    deck8.splice(deck8.length-1, 0, wonCard)
+  } else {
+// War!
+  }
   
-  // if (deck2[0] > deck6[0])
 }
 
 
