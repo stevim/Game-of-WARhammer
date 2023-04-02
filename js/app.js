@@ -1,14 +1,17 @@
-let playingDeckA = []
-let playedCardA = []
-let hostageDeckA = []
-let collectionDeckA = []
+let playingDeckA = [{}]
+let playedCardA = [{}]
+let hostageDeckA = [{}]
+let collectionDeckA = [{}]
 
-let playingDeckB = []
-let playedCardB = []
-let hostageDeckB = []
-let collectionDeckB = []
+let playingDeckB = [{}]
+let playedCardB = [{}]
+let hostageDeckB = [{}]
+let collectionDeckB = [{}]
 
-let startingDeck = []
+let startingDeck = [{}]
+
+const aWins = playedCardA[0].value > playedCardB[0].value
+const bWins = playedCardA[0].value < playedCardB[0].value
 
 let deck1El = document.getElementById('playingDeckA')
 let deck2El = document.getElementById('playedCardA')
@@ -19,9 +22,6 @@ let deck6El = document.getElementById('playedCardB')
 let deck7El = document.getElementById('hostageDeckB')
 let deck8El = document.getElementById('collectionDeckB')
 
-const aWins = playedCardA[0].value > playedCardB[0].value
-const bWins = playedCardA[0].value < playedCardB[0].value
-
 document.getElementById(`startBtn`).addEventListener(`click`, function() {
   shuffleDeck(startingDeck)
   handleStart()
@@ -29,10 +29,15 @@ document.getElementById(`startBtn`).addEventListener(`click`, function() {
   console.log(playingDeckB) 
 })
 document.getElementById('nextTurnBtn').addEventListener(`click`, function() {
-  playCardsOrWin()
+  playCardsOrEndGame()
+  console.log(playedCardA)
+  console.log(playedCardB)
   compareCards()
   console.log(playedCardA)
   console.log(playedCardB)
+  console.log(collectionDeckA)
+  console.log(collectionDeckB)
+  
   
   
 })
@@ -127,14 +132,14 @@ function handleStart() {
   playingDeckB = startingDeck.splice(0,26)
 }
 
-function playCardsOrWin() {
+function playCardsOrEndGame() {
   if (playingDeckA.length !== 0 && playingDeckB.length !== 0) {
     // playedCardA = playingDeckA.splice(0,1)
     // playedCardB = playingDeckB.splice(0,1)
     playCard()
   } else if (playingDeckA.length === 0 && playingDeckB.length !== 0) {
     // render message playerB wins
-  } else if (playingDeckA.length !== 0 || playingDeckB.length === 0) {
+  } else if (playingDeckA.length !== 0 && playingDeckB.length === 0) {
     // render message playerA wins
   } else {
     // render message tie game
@@ -145,11 +150,15 @@ function compareCards() {
     // const wonCard = playedCardB.splice(0,1)
     // collectionDeckA.splice(0, 0, wonCard)
     playerAWins()
+    console.log(`Player A Wins!`)
+    
 
   } else if (bWins) {
     // const wonCard = playedCardA.splice(0,1)
     // collectionDeckB.splice(0, 0, wonCard)
     playerBWins()
+    console.log(`Player B Wins!`)
+    
   } else {
 // War!
     // let hostagesA = playingDeckA.splice(0,3)
@@ -158,7 +167,7 @@ function compareCards() {
     // hostageDeckB.splice(0,0,hostagesB,playedCardB[0])
     // playedCardA.pop()
     // playedCardB.pop()
-    hostages()
+    supplyHostages()
     playCard()
     if (aWins) {
 
@@ -178,7 +187,7 @@ function playCard() {
   playedCardB = playingDeckB.splice(0,1)
 }
 
-function hostages() {    
+function supplyHostages() {    
   let hostagesA = playingDeckA.splice(0,3)
   let hostagesB = playingDeckB.splice(0,3)
   hostageDeckA.splice(0,0,hostagesA,playedCardA[0])
@@ -190,11 +199,15 @@ function hostages() {
 function playerAWins() {
   const wonCard = playedCardB.splice(0,1)
   const ownCard = playedCardA.splice(0,1)
-  collectionDeckA.splice(0, 0, wonCard, ownCard)
+  const hostagesA = hostageDeckA.splice(0, hostageDeckA.length)
+  const hostagesB = hostageDeckB.splice(0, hostageDeckB.length)
+  collectionDeckA.splice(0, 0, wonCard, ownCard, hostagesA, hostagesB)
 }
 
 function playerBWins() {
   const wonCard = playedCardA.splice(0,1)
   const ownCard = playedCardB.splice(0,1)
-  collectionDeckB.splice(0, 0, wonCard, ownCard)
+  const hostagesA = hostageDeckA.splice(0, hostageDeckA.length)
+  const hostagesB = hostageDeckB.splice(0, hostageDeckB.length)
+  collectionDeckB.splice(0, 0, wonCard, ownCard, hostagesA, hostagesB)
 }
