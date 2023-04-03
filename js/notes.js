@@ -24,3 +24,41 @@
     // hostageDeckB.splice(0,0,hostagesB,playedCardB[0])
     // playedCardA.pop()
     // playedCardB.pop()
+
+    // collectionDeckB.push(hostagesA[0],hostagesA[1],hostagesA[2],hostagesB[0],hostagesB[1],hostagesB[2])
+
+
+     // collectionDeckA.push(hostagesA[0],hostagesA[1],hostagesA[2],hostagesB[0],hostagesB[1],hostagesB[2])
+       // hostagesA.forEach(function(card) {
+  //   collectionDeckA.push(hostagesA[card.value-1])
+  // })
+  // hostagesB.forEach(function(card) {
+  //   collectionDeckA.push(hostagesB[card.value-1])
+  // })
+
+    // hostagesA.forEach(function(card) {
+  //   collectionDeckB.push(hostagesA[card.value-1])
+  // })
+  // hostagesB.forEach(function(card) {
+  //   collectionDeckB.push(hostagesB[card.value-1])
+  // })
+
+function moveDeck(pDeck,cDeck) {
+    console.log(playingDeckA,collectionDeckA)
+    pDeck = cDeck
+    console.log(playingDeckA,collectionDeckA)
+    cDeck = []
+    console.log(playingDeckA,collectionDeckA)
+}
+moveDeck(playingDeckA,collectionDeckA)
+moveDeck(playingDeckB,collectionDeckB)
+function moveDeckA() {
+    playingDeckA = collectionDeckA
+    collectionDeckA = []
+}
+function moveDeckB() {
+    playingDeckB = collectionDeckB
+    collectionDeckB = []
+}
+moveDeckA()
+moveDeckB()
