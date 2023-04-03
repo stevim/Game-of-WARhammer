@@ -90,10 +90,11 @@ document.getElementById(`startBtn`).addEventListener(`click`, function() {
 
 document.getElementById('nextTurnBtn').addEventListener(`click`, function() {
   playCards()
-  compareCards()
-  
   console.log(playedCardA)
   console.log(playedCardB)
+  compareCards()
+  
+
 
   console.log(collectionDeckA)
   console.log(collectionDeckB)
@@ -215,12 +216,14 @@ function bWinsGame() {
 }
 
 function supplyHostages() {    
-  const hostagesA = playingDeckA.shift()
-  const hostagesB = playingDeckB.shift()
+  const hostagesA = playingDeckA.splice(0,3)
+  const hostagesB = playingDeckB.splice(0,3)
   const cardA = playedCardA.shift()
   const cardB = playedCardB.shift()
-  hostageDeckA.push(hostagesA,cardA)
-  hostageDeckB.push(hostagesB,cardB)
+  hostageDeckA.push(hostagesA[0],hostagesA[1],hostagesA[2])
+  hostageDeckA.push(cardA)
+  hostageDeckB.push(hostagesB[0],hostagesB[1],hostagesB[2],)
+  hostageDeckB.push(cardB)
 }
 
 function playerAWins() {
@@ -238,12 +241,13 @@ function playerBWins() {
 function winHostagesA() {
   const hostagesA = hostageDeckA.splice(0,hostageDeckA.length)
   const hostagesB = hostageDeckB.splice(0,hostageDeckB.length)
-  collectionDeckA.push(hostagesA,hostagesB)
+  collectionDeckA.push(hostagesA[0],hostagesA[1],hostagesA[2],hostagesB[0],hostagesB[1],hostagesB[2])
 }
 function winHostagesB() {
   const hostagesA = hostageDeckA.splice(0,hostageDeckA.length)
   const hostagesB = hostageDeckB.splice(0,hostageDeckB.length)
-  collectionDeckB.push(hostagesA,hostagesB)
+  debugger
+  collectionDeckB.push(hostagesA[0],hostagesA[1],hostagesA[2],hostagesB[0],hostagesB[1],hostagesB[2])
 }
 
 function createAndPlayPlayedCards() {
