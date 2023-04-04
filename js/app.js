@@ -131,7 +131,11 @@ function compareCards() {
     console.log("War!")
     supplyHostages()
     playCards()
-    if (playedCardA[0].value > playedCardB[0].value) {
+    if (playedCardA[0].value === null && playedCardB[0].value !== null) {
+      bWinsGame()
+    } else if (playedCardA[0].value !== null && playedCardB[0].value === null) {
+      aWinsGame()
+    } else if (playedCardA[0].value > playedCardB[0].value) {
     playerAWins()
     console.log(`Player A Wins War!`)
     winHostagesA()
@@ -280,9 +284,11 @@ function playCards() {
   // }
 // }
 function aWinsGame() {
+  debugger
   console.log("A Wins!")  
 }
 function bWinsGame() {
+  debugger
   console.log("B Wins!")
 }
 function supplyHostages() {    
@@ -324,12 +330,9 @@ function supplyHostages() {
     }
   }
 }
-
 function supplyDoubleWarHostages () {
   
 }
-
-
 function playerAWins() {
   const cardA = playedCardA.pop()
   const cardB = playedCardB.pop()
@@ -388,10 +391,20 @@ function returnHostagesAndCardPlayed() {
 function moveDeckA() {
   playingDeckA = collectionDeckA
   collectionDeckA = []
+  playingDeckA.forEach(function(object) {
+    if (playingDeckA[object] === {}) {
+      playingDeckA.splice([object], 1)
+    }
+  })
 }
 function moveDeckB() {
   playingDeckB = collectionDeckB
   collectionDeckB = []
+  playingDeckA.forEach(function(object) {
+    if (playingDeckA[object] === {}) {
+      playingDeckA.splice([object], 1)
+    }
+  })
 }
 function moveHostages(){
 const hostagesA = playingDeckA.splice(0,3)
