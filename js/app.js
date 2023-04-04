@@ -148,17 +148,17 @@ function compareCards() {
     } else { 
       // Double War!
       console.log("Double War!")
-      supplyHostages()
+      supplyDoubleWarHostages()
       playCards()
       debugger
       if (playedCardA[0].value > playedCardB[0].value) {
         playerAWins()
         console.log("Player A Wins Double War!")
-            winDoubleHostagesA()
+        winDoubleHostagesA()
         } else if (playedCardA[0].value < playedCardB[0].value) {
         playerBWins()
         console.log("Player B Wins Double War!")
-            winDoubleHostagesB()
+        winDoubleHostagesB()
         } else {
           // Triple War aka Tie
         }
@@ -306,49 +306,83 @@ function supplyHostages() {
   } else if (playingDeckA.length < 3 && playingDeckB.length >= 3) {
     shuffleDeck(collectionDeckA)
     moveDeckA()
-    if (playingDeckA.length < 3) {
-      bWinsGame()
+    moveHostages()
+    if (playedCardA.length === 1 && hostageDeckA.length === 4) {
+      console.log("Continue!")
     } else {
-      moveHostages()
+      aWinsGame()
     }
   } else if (playingDeckA.length >= 3 && playingDeckB.length < 3) {
     shuffleDeck(collectionDeckB)
     moveDeckB()
-    if (playingDeckB.length < 3) {
-      aWinsGame
+    moveHostages()
+    if (playingCardB.length === 1 && hostageDeckB.length === 4) {
+      console.log("Continue!")
     } else {
-      moveHostages()
+      bWinsGame()
     }
   } else if (playingDeckA.length < 3 && playingDeckB.length < 3) {
-    if (collectionDeckA.length >= 3 && collectionDeckB.length >= 3) {
       shuffleDeck(collectionDeckA)
       shuffleDeck(collectionDeckB)
       moveDeckA()
       moveDeckB()
       moveHostages()
-    } else if (collectionDeckA.length >= 3 && collectionDeckB.length < 3) {
-      shuffleDeck(collectionDeckA)
-      moveDeckA()
-      shuffleDeck(collectionDeckB)
-      moveDeckB()
-      moveHostages()
-    } else if (collectionDeckA.length < 3 && collectionDeckB.length >= 3) {
-      shuffleDeck(collectionDeckA)
-      shuffleDeck(collectionDeckB)
-      moveDeckA()
-      moveDeckB()
-      moveHostages()
-    } else if (collectionDeckA.length < 3 && collectionDeckB.length < 3) {
-      shuffleDeck(collectionDeckA)
-      shuffleDeck(collectionDeckB)
-      moveDeckA()
-      moveDeckB()
-      moveHostages()
+      if ((playedCardA.length === 1 && hostageDeckA.length === 4) && (playedCardB.length === 1 && hostageDeckB.length === 4)) {
+      console.log("Continue!")
+    } else if ((playedCardA.length === 1 && hostageDeckA.length === 4) && (playedCardB.length !== 1 || hostageDeckB.length !== 4)) {
+
+      aWinsGame()
+    } else if ((playedCardA.length !== 1 || hostageDeckA.length !== 4) && (playedCardB.length === 1 && hostageDeckB.length === 4)) {
+
+      bWinsGame()
+    } else {
+      returnHostagesAndCardPlayed()
+      createAndPlayPlayedCards()
+      compareCards()
     }
   }
 }
-function supplyDoubleWarHostages () {
-  
+function supplyDoubleWarHostages () {    
+  if (playingDeckA.length >= 6 && playingDeckB.length >= 6) {
+    moveHostages()
+  } else if (playingDeckA.length < 6 && playingDeckB.length >= 6) {
+    shuffleDeck(collectionDeckA)
+    moveDeckA()
+    moveHostages()
+    if (playedCardA.length === 1 && hostageDeckA.length === 8) {
+      console.log("Continue!")
+    } else {
+      aWinsGame()
+    }
+  } else if (playingDeckA.length >= 6 && playingDeckB.length < 6) {
+    shuffleDeck(collectionDeckB)
+    moveDeckB()
+    moveHostages()
+    if (playingCardB.length === 1 && hostageDeckB.length === 8) {
+      console.log("Continue!")
+    } else {
+      bWinsGame()
+    }
+  } else if (playingDeckA.length < 6 && playingDeckB.length < 6) {
+      shuffleDeck(collectionDeckA)
+      shuffleDeck(collectionDeckB)
+      moveDeckA()
+      moveDeckB()
+      moveHostages()
+      if ((playedCardA.length === 1 && hostageDeckA.length === 8) && (playedCardB.length === 1 && hostageDeckB.length === 8)) {
+      console.log("Continue!")
+    } else if ((playedCardA.length === 1 && hostageDeckA.length === 8) && (playedCardB.length !== 1 || hostageDeckB.length !== 8)) {
+
+      aWinsGame()
+    } else if ((playedCardA.length !== 1 || hostageDeckA.length !== 8) && (playedCardB.length === 1 && hostageDeckB.length === 8)) {
+
+      bWinsGame()
+    } else {
+      returnHostagesAndCardPlayed()
+      createAndPlayPlayedCards()
+      compareCards()
+    }
+  }
 }
 function playerAWins() {
   const cardA = playedCardA.pop()
