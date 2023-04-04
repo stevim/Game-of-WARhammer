@@ -7,16 +7,18 @@ let playingDeckB = []
 let playedCardB = []
 let hostageDeckB = []
 let collectionDeckB = []
+
 let startingDeck = []
 // cached references
-let deck1El = document.getElementById('playingDeckA')
-let deck2El = document.getElementById('playedCardA')
-let deck3El = document.getElementById('hostageDeckA')
-let deck4El = document.getElementById('collectionDeckA')
-let deck5El = document.getElementById('playingDeckB')
-let deck6El = document.getElementById('playedCardB')
-let deck7El = document.getElementById('hostageDeckB')
-let deck8El = document.getElementById('collectionDeckB')
+let playingDeckAEl = document.getElementById('playingDeckA')
+let playedCardAEl = document.getElementById('playedCardA')
+let hostageDeckAEl = document.getElementById('hostageDeckA')
+let collectionDeckAEl = document.getElementById('collectionDeckA')
+let playingDeckBEl = document.getElementById('playingDeckB')
+let playedCardBEl = document.getElementById('playedCardB')
+let hostageDeckBEl = document.getElementById('hostageDeckB')
+let collectionDeckBEl = document.getElementById('collectionDeckB')
+
 let startBtnEl = document.getElementById('startBtn')
 let nextTurnBtnEl = document.getElementById('nextTurnBtn')
 let resetBtnEl = document.getElementById('resetBtn')
@@ -148,6 +150,7 @@ function compareCards() {
       console.log("Double War!")
       supplyHostages()
       playCards()
+      debugger
       if (playedCardA[0].value > playedCardB[0].value) {
         playerAWins()
         console.log("Player A Wins Double War!")
@@ -256,7 +259,13 @@ function playCards() {
       createAndPlayPlayedCards()
     } else if (collectionDeckA.length === 0 && collectionDeckB.length === 0) {
       returnHostagesAndCardPlayed()
-      console.log("It's another draw, but no one has enough cards to play, take them back!")
+      if (playingDeckA.length === playingDeckB.length) {
+        console.log("It's another War, but no one has enough cards to play, take them back! Since you both have the same number of cards, go again!")
+      } else if (playingDeckA.length > playingDeckB.length) {
+        aWinsGame()
+      } else if (playingDeckB.length > playingDeckA.length) {
+        bWinsGame()
+      }
     } else if (collectionDeckA.length !== 0 && collectionDeckB.length === 0) {
       aWinsGame()
     } else if (collectionDeckA.length === 0 && collectionDeckB.length !== 0) {
@@ -297,11 +306,19 @@ function supplyHostages() {
   } else if (playingDeckA.length < 3 && playingDeckB.length >= 3) {
     shuffleDeck(collectionDeckA)
     moveDeckA()
-    moveHostages()
+    if (playingDeckA.length < 3) {
+      bWinsGame()
+    } else {
+      moveHostages()
+    }
   } else if (playingDeckA.length >= 3 && playingDeckB.length < 3) {
     shuffleDeck(collectionDeckB)
     moveDeckB()
-    moveHostages()
+    if (playingDeckB.length < 3) {
+      aWinsGame
+    } else {
+      moveHostages()
+    }
   } else if (playingDeckA.length < 3 && playingDeckB.length < 3) {
     if (collectionDeckA.length >= 3 && collectionDeckB.length >= 3) {
       shuffleDeck(collectionDeckA)
@@ -311,8 +328,8 @@ function supplyHostages() {
       moveHostages()
     } else if (collectionDeckA.length >= 3 && collectionDeckB.length < 3) {
       shuffleDeck(collectionDeckA)
-      shuffleDeck(collectionDeckB)
       moveDeckA()
+      shuffleDeck(collectionDeckB)
       moveDeckB()
       moveHostages()
     } else if (collectionDeckA.length < 3 && collectionDeckB.length >= 3) {
@@ -381,11 +398,11 @@ function returnHostagesAndCardPlayed() {
   const hostagesB = hostageDeckB
   const cardA = playedCardA.pop()
   const cardB = playedCardB.pop()
-  collectionDeckA.push(hostagesA[0],hostagesA[1],hostagesA[2],cardA)
-  collectionDeckB.push(hostagesB[0],hostagesB[1],hostagesB[2],cardB)
+  playingDeckA.push(hostagesA[0],hostagesA[1],hostagesA[2],cardA)
+  playingDeckB.push(hostagesB[0],hostagesB[1],hostagesB[2],cardB)
   if (hostagesA.length >= 5) {
-    collectionDeckA.push(hostagesA[3],hostagesA[4],hostagesA[5],)
-    collectionDeckB.push(hostagesB[3],hostagesB[4],hostagesB[5],)
+    playingDeckA.push(hostagesA[3],hostagesA[4],hostagesA[5],)
+    playingDeckB.push(hostagesB[3],hostagesB[4],hostagesB[5],)
   }
 }
 function moveDeckA() {
@@ -415,4 +432,13 @@ hostageDeckA.push(hostagesA[0],hostagesA[1],hostagesA[2])
 hostageDeckA.push(cardA)
 hostageDeckB.push(hostagesB[0],hostagesB[1],hostagesB[2],)
 hostageDeckB.push(cardB)
+}
+
+// Rendering
+
+function render(card, deck) {
+  if (deck.length < 6) {
+
+  }
+
 }
