@@ -446,11 +446,18 @@ function winDoubleHostagesB() {
   render()
 }
 function createAndPlayPlayedCards() {
+  let soldierA = playingDeckA[0].title
+  let soldierB = playingDeckB[0].title
   const cardA = playingDeckA.shift()
   const cardB = playingDeckB.shift()
   playedCardA.push(cardA)
   playedCardB.push(cardB)
-  render()
+  playedCardAEl.classList.add(soldierA)
+  playedCardBEl.classList.add(soldierB)
+  // renderWar()
+  
+  setTimeout(renderEmptySoldier(),3000)
+  
 }
 function returnHostagesAndCardPlayed() {
   const hostagesA = hostageDeckA
@@ -671,6 +678,11 @@ function renderEmptyCollections () {
   collectionDeckAEl.classList.add('outline')
   collectionDeckBEl.classList.remove('lighterShadow','shadow','darkerShadow','back-blue')
   collectionDeckBEl.classList.add('outline')
+}
+function renderWar() {
+  playedCardAEl.classList.remove('lighterShadow','shadow','darkerShadow','back-blue','outline')
+  playedCardAEl.classList.add('back-blue')
+  playedCardBEl.classList.remove('lighterShadow','shadow','darkerShadow','back-blue','outline')
 }
 
 // Timer
