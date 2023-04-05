@@ -43,6 +43,7 @@ document.getElementById('nextTurnBtn').addEventListener(`click`, function() {
   console.log(hostageDeckB)
   console.log(collectionDeckA)
   console.log(collectionDeckB)
+  renderEmptySoldier()
 })
 document.getElementById('resetBtn').addEventListener(`click`, function() {
   handleReset()
@@ -294,11 +295,11 @@ function playCards() {
   }
 }
 function aWinsGame() {
-  console.log("A Wins!") 
+  console.log("A Wins the Game!") 
   nextTurnBtnEl.disabled = true
 }
 function bWinsGame() {
-  console.log("B Wins!")
+  console.log("B Wins the Game!")
   nextTurnBtnEl.disabled = true
 }
 function supplyHostages() {    
@@ -371,7 +372,7 @@ function supplyDoubleWarHostages () {
     moveDeckB()
     moveHostages()
     createAndPlayPlayedCards()
-    if (playingCardB.length === 1 && hostageDeckB.length === 8) {
+    if (playedCardB.length === 1 && hostageDeckB.length === 8) {
       console.log("Continue!")
     } 
     else {
@@ -506,7 +507,7 @@ function render(cardPicked) {
 }
 function renderPlayingDeckA() {
   if (playingDeckA.length === 0) {
-    playingDeckAEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    playingDeckAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
     playingDeckAEl.classList.add('outline')
   }
   else if(playingDeckA.length !== 0 && playingDeckA.length < 12) {
@@ -524,7 +525,7 @@ function renderPlayingDeckA() {
 }
 function renderPlayingDeckB() {
   if (playingDeckB.length === 0) {
-    playingDeckBEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    playingDeckBEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
     playingDeckBEl.classList.add('outline')
   }
   else if(playingDeckB.length !== 0 && playingDeckB.length < 12) {
@@ -542,7 +543,7 @@ function renderPlayingDeckB() {
 }
 function renderPlayedCardA() {
   if (playedCardA.length === 0) {
-    playedCardAEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    playedCardAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue','back-blue')
     playedCardAEl.classList.add('outline')
   }
   else if(playedCardA.length !== 0 && playedCardA.length < 12) {
@@ -560,7 +561,7 @@ function renderPlayedCardA() {
 }
 function renderPlayedCardB() {
   if (playedCardB.length === 0) {
-    playedCardBEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    playedCardBEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
     playedCardBEl.classList.add('outline')
   }
   else if(playedCardB.length !== 0 && playedCardB.length < 12) {
@@ -578,7 +579,7 @@ function renderPlayedCardB() {
 }
 function renderHostageDeckA() {
   if (hostageDeckA.length === 0) {
-    hostageDeckAEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    hostageDeckAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
     hostageDeckAEl.classList.add('outline')
   }
   else if(hostageDeckA.length !== 0 && hostageDeckA.length < 12) {
@@ -596,7 +597,7 @@ function renderHostageDeckA() {
 }
 function renderHostageDeckB() {
   if (hostageDeckB.length === 0) {
-    hostageDeckBEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    hostageDeckBEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
     hostageDeckBEl.classList.add('outline')
   }
   else if(hostageDeckB.length !== 0 && hostageDeckB.length < 12) {
@@ -614,7 +615,7 @@ function renderHostageDeckB() {
 }
 function renderCollectionDeckA() {
   if (collectionDeckA.length === 0) {
-    collectionDeckAEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    collectionDeckAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
     collectionDeckAEl.classList.add('outline')
   }
   else if(collectionDeckA.length !== 0 && collectionDeckA.length < 12) {
@@ -647,6 +648,13 @@ function renderCollectionDeckB() {
     collectionDeckBEl.classList.remove('shadow','lighterShadow','outline')
     collectionDeckBEl.classList.add('darkerShadow','back-blue')
   }
+}
+function renderEmptySoldier() {
+  playedCardAEl.classList.remove('lighterShadow','shadow','darkerShadow','back-blue')
+  playedCardAEl.classList.add('outline')
+  playedCardBEl.classList.remove('lighterShadow','shadow','darkerShadow','back-blue')
+  playedCardBEl.classList.add('outline')
+
 }
 // // variables
 // let playingDeckA = []
