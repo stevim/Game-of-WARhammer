@@ -44,87 +44,87 @@
 .card.diamonds.A,
 .card.dA,
 .card.♦A {
-  background-image: url("./assets/images/diamonds/diamonds-A.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-A.svg"); }
 
 .card.diamonds.K,
 .card.dK,
 .card.♦K {
-  background-image: url("./assets/images/diamonds/diamonds-K.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-K.svg"); }
 
 .card.diamonds.Q,
 .card.dQ,
 .card.♦Q {
-  background-image: url("./assets/images/diamonds/diamonds-Q.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-Q.svg"); }
 
 .card.diamonds.J,
 .card.dJ,
 .card.♦J {
-  background-image: url("./assets/images/diamonds/diamonds-J.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-J.svg"); }
 
 .card.diamonds.r10,
 .card.d10,
 .card.♦10 {
-  background-image: url("./assets/images/diamonds/diamonds-r10.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-r10.svg"); }
 
 .card.diamonds.r09,
 .card.d09,
 .card.♦09 {
-  background-image: url("./assets/images/diamonds/diamonds-r09.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-r09.svg"); }
 
 .card.diamonds.r08,
 .card.d08,
 .card.♦08 {
-  background-image: url("./assets/images/diamonds/diamonds-r08.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-r08.svg"); }
 
 .card.diamonds.r07,
 .card.d07,
 .card.♦07 {
-  background-image: url("./assets/images/diamonds/diamonds-r07.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-r07.svg"); }
 
 .card.diamonds.r06,
 .card.d06,
 .card.♦06 {
-  background-image: url("./assets/images/diamonds/diamonds-r06.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-r06.svg"); }
 
 .card.diamonds.r05,
 .card.d05,
 .card.♦05 {
-  background-image: url("./assets/images/diamonds/diamonds-r05.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-r05.svg"); }
 
 .card.diamonds.r04,
 .card.d04,
 .card.♦04 {
-  background-image: url("./assets/images/diamonds/diamonds-r04.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-r04.svg"); }
 
 .card.diamonds.r03,
 .card.d03,
 .card.♦03 {
-  background-image: url("./assets/images/diamonds/diamonds-r03.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-r03.svg"); }
 
 .card.diamonds.r02,
 .card.d02,
 .card.♦02 {
-  background-image: url("./assets/images/diamonds/diamonds-r02.svg"); }
+  background-image: url("../assets/images/diamonds/diamonds-r02.svg"); }
 
 .card.hearts.A,
 .card.hA,
 .card.♥A {
-  background-image: url("./assets/images/hearts/hearts-A.svg"); }
+  background-image: url("../assets/images/hearts/hearts-A.svg"); }
 
 .card.hearts.K,
 .card.hK,
 .card.♥K {
-  background-image: url("./assets/images/hearts/hearts-K.svg"); }
+  background-image: url("../assets/images/hearts/hearts-K.svg"); }
 
 .card.hearts.Q,
 .card.hQ,
 .card.♥Q {
-  background-image: url("./assets/images/hearts/hearts-Q.svg"); }
+  background-image: url("../assets/images/hearts/hearts-Q.svg"); }
 
 .card.hearts.J,
 .card.hJ,
 .card.♥J {
-  background-image: url("./assets/images/hearts/hearts-J.svg"); }
+  background-image: url("../assets/images/hearts/hearts-J.svg"); }
 
 .card.hearts.r10,
 .card.h10,
