@@ -31,6 +31,8 @@ document.getElementById('startBtn').addEventListener(`click`, function() {
   nextTurnBtnEl.disabled = false
   console.log(playingDeckA)
   console.log(playingDeckB)
+  renderPlayingDeckA()
+  renderPlayingDeckB()
 })
 document.getElementById('nextTurnBtn').addEventListener(`click`, function() {
   playCards()
@@ -240,6 +242,8 @@ function handleReset() {
   ]
   nextTurnBtnEl.disabled = true
   startBtnEl.disabled = false
+  renderEmptySoldier()
+  renderEmptyCollections()
 }
 function playCards() {
   if (playingDeckA.length !== 0 && playingDeckB.length !== 0) {
@@ -302,7 +306,7 @@ function bWinsGame() {
   console.log("B Wins the Game!")
   nextTurnBtnEl.disabled = true
 }
-function supplyHostages() {    
+function supplyHostages() {
   if (playingDeckA.length >= 3 && playingDeckB.length >= 3) {
     moveHostages()
   } 
@@ -351,7 +355,7 @@ function supplyHostages() {
     }
   }
 }
-function supplyDoubleWarHostages () {    
+function supplyDoubleWarHostages () {
   if (playingDeckA.length >= 6 && playingDeckB.length >= 6) {
     moveHostages()
     createAndPlayPlayedCards()
@@ -546,6 +550,9 @@ function renderPlayedCardA() {
     playedCardAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue','back-blue')
     playedCardAEl.classList.add('outline')
   }
+  else if (playedCardA.length === 1) {
+    playedCardAEl.classList.remove('outline')
+  }
   else if(playedCardA.length !== 0 && playedCardA.length < 12) {
     playedCardAEl.classList.remove('shadow','outline','darkerShadow')
     playedCardAEl.classList.add('lighterShadow','back-blue')
@@ -563,6 +570,9 @@ function renderPlayedCardB() {
   if (playedCardB.length === 0) {
     playedCardBEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
     playedCardBEl.classList.add('outline')
+  }
+  else if (playedCardB.length === 1) {
+    playedCardBEl.classList.remove('outline')
   }
   else if(playedCardB.length !== 0 && playedCardB.length < 12) {
     playedCardBEl.classList.remove('shadow','outline','darkerShadow')
@@ -656,23 +666,28 @@ function renderEmptySoldier() {
   playedCardBEl.classList.add('outline')
 
 }
-// // variables
-// let playingDeckA = []
-// let playedCardA = []
-// let hostageDeckA = []
-// let collectionDeckA = []
-// let playingDeckB = []
-// let playedCardB = []
-// let hostageDeckB = []
-// let collectionDeckB = []
+function renderEmptyCollections () {
+  collectionDeckAEl.classList.remove('lighterShadow','shadow','darkerShadow','back-blue')
+  collectionDeckAEl.classList.add('outline')
+  collectionDeckBEl.classList.remove('lighterShadow','shadow','darkerShadow','back-blue')
+  collectionDeckBEl.classList.add('outline')
+}
 
-// let startingDeck = []
-// // cached references
-// let playingDeckAEl = document.getElementById('playingDeckA')
-// let playedCardAEl = document.getElementById('playedCardA')
-// let hostageDeckAEl = document.getElementById('hostageDeckA')
-// let collectionDeckAEl = document.getElementById('collectionDeckA')
-// let playingDeckBEl = document.getElementById('playingDeckB')
-// let playedCardBEl = document.getElementById('playedCardB')
-// let hostageDeckBEl = document.getElementById('hostageDeckB')
-// let collectionDeckBEl = document.getElementById('collectionDeckB')
+// Timer
+
+// function startTimer() {
+//   if (timerIntervalId) {
+//     seconds = 0
+//     clearInterval(timerIntervalId)
+//   }
+//   timerIntervalId = setInterval(tick, 1000)
+// }
+
+// function tick() {
+//   seconds++
+// }
+
+// function renderTime() {
+//   min = Math.floor(seconds / 60)
+//   sec = seconds % 60
+// }
