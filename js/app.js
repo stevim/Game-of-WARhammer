@@ -125,41 +125,50 @@ function compareCards() {
   if (playedCardA[0].value > playedCardB[0].value) {
     playerAWins()
     console.log(`Player A Wins!`)
-  } else if (playedCardA[0].value < playedCardB[0].value) {
+  } 
+  else if (playedCardA[0].value < playedCardB[0].value) {
     playerBWins()
     console.log(`Player B Wins!`)
-  } else {
+  } 
+  else {
 // War!
     console.log("War!")
     supplyHostages()
     playCards()
-    if (playedCardA[0].value === null && playedCardB[0].value !== null) {
+    if (playedCardA.length === 0 && playedCardB.length === 1) {
+      
       bWinsGame()
-    } else if (playedCardA[0].value !== null && playedCardB[0].value === null) {
+    } else if (playedCardA.length === 1 && playedCardB.length === 0) {
+      
       aWinsGame()
-    } else if (playedCardA[0].value > playedCardB[0].value) {
+    } 
+    else if (playedCardA[0].value > playedCardB[0].value) {
     playerAWins()
     console.log(`Player A Wins War!`)
     winHostagesA()
-    } else if (playedCardA[0].value < playedCardB[0].value) {
+    } 
+    else if (playedCardA[0].value < playedCardB[0].value) {
     playerBWins()
     console.log(`Player B Wins War!`)
     winHostagesB()
-    } else { 
+    } 
+    else { 
       // Double War!
       console.log("Double War!")
       supplyDoubleWarHostages()
       playCards()
-      debugger
+      
       if (playedCardA[0].value > playedCardB[0].value) {
         playerAWins()
         console.log("Player A Wins Double War!")
         winDoubleHostagesA()
-        } else if (playedCardA[0].value < playedCardB[0].value) {
+        } 
+        else if (playedCardA[0].value < playedCardB[0].value) {
         playerBWins()
         console.log("Player B Wins Double War!")
         winDoubleHostagesB()
-        } else {
+        } 
+        else {
           // Triple War aka Tie
         }
       }
@@ -234,23 +243,28 @@ function handleReset() {
 function playCards() {
   if (playingDeckA.length !== 0 && playingDeckB.length !== 0) {
   createAndPlayPlayedCards()
-  } else if (playingDeckA.length !== 0 && playingDeckB.length === 0) {
+  } 
+  else if (playingDeckA.length !== 0 && playingDeckB.length === 0) {
     if (collectionDeckB.length !== 0) {
       shuffleDeck(collectionDeckB)
       moveDeckB()
       createAndPlayPlayedCards()
-    } else {
+    } 
+    else {
       aWinsGame()
     }
-  } else if (playingDeckA.length === 0 && playingDeckB.length !== 0) {
+  } 
+  else if (playingDeckA.length === 0 && playingDeckB.length !== 0) {
     if (collectionDeckA.length !== 0) {
       shuffleDeck(collectionDeckA)
       moveDeckA()
       createAndPlayPlayedCards()
-    } else {
-      bWinsGame
+    } 
+    else {
+      bWinsGame()
     }
-  } else if (playingDeckA.length === 0 && playingDeckB.length === 0) {
+  } 
+  else if (playingDeckA.length === 0 && playingDeckB.length === 0) {
     if (collectionDeckA.length !== 0 && collectionDeckB.length !== 0) {
       shuffleDeck(collectionDeckA)
       shuffleDeck(collectionDeckB)
@@ -259,51 +273,39 @@ function playCards() {
       createAndPlayPlayedCards()
     } else if (collectionDeckA.length === 0 && collectionDeckB.length === 0) {
       returnHostagesAndCardPlayed()
+      createAndPlayPlayedCards()
+      compareCards()
       if (playingDeckA.length === playingDeckB.length) {
         console.log("It's another War, but no one has enough cards to play, take them back! Since you both have the same number of cards, go again!")
-      } else if (playingDeckA.length > playingDeckB.length) {
+      } 
+      else if (playingDeckA.length > playingDeckB.length) {
         aWinsGame()
-      } else if (playingDeckB.length > playingDeckA.length) {
+      } 
+      else if (playingDeckB.length > playingDeckA.length) {
         bWinsGame()
       }
-    } else if (collectionDeckA.length !== 0 && collectionDeckB.length === 0) {
+    } 
+    else if (collectionDeckA.length !== 0 && collectionDeckB.length === 0) {
       aWinsGame()
-    } else if (collectionDeckA.length === 0 && collectionDeckB.length !== 0) {
+    } 
+    else if (collectionDeckA.length === 0 && collectionDeckB.length !== 0) {
       bWinsGame()
     }
   }
 }
-// function shuffleCollectionDeckA() {
-//   if (collectionDeckA.length !== 0) {
-//     shuffleDeck(collectionDeckA)
-//     playingDeckA = collectionDeckA
-//     collectionDeckA = []
-//   } else {
-//     bWinsGame()
-//   }
-// }
-
-// function shuffleCollectionDeckB() {
-  // if (collectionDeckB !== 0) {
-  //   shuffleDeck(collectionDeckB)
-  //   playingDeckB = collectionDeckB
-  //   collectionDeckB = []
-  // } else {
-  //   aWinsGame()
-  // }
-// }
 function aWinsGame() {
-  debugger
-  console.log("A Wins!")  
+  console.log("A Wins!") 
+  nextTurnBtnEl.disabled = true
 }
 function bWinsGame() {
-  debugger
   console.log("B Wins!")
+  nextTurnBtnEl.disabled = true
 }
 function supplyHostages() {    
   if (playingDeckA.length >= 3 && playingDeckB.length >= 3) {
     moveHostages()
-  } else if (playingDeckA.length < 3 && playingDeckB.length >= 3) {
+  } 
+  else if (playingDeckA.length < 3 && playingDeckB.length >= 3) {
     shuffleDeck(collectionDeckA)
     moveDeckA()
     moveHostages()
@@ -312,30 +314,36 @@ function supplyHostages() {
     } else {
       aWinsGame()
     }
-  } else if (playingDeckA.length >= 3 && playingDeckB.length < 3) {
+  } 
+  else if (playingDeckA.length >= 3 && playingDeckB.length < 3) {
     shuffleDeck(collectionDeckB)
     moveDeckB()
     moveHostages()
-    if (playingCardB.length === 1 && hostageDeckB.length === 4) {
+    createAndPlayPlayedCards()
+    if (playedCardB.length === 1 && hostageDeckB.length === 4) {
       console.log("Continue!")
-    } else {
+    } 
+    else {
       bWinsGame()
     }
-  } else if (playingDeckA.length < 3 && playingDeckB.length < 3) {
-      shuffleDeck(collectionDeckA)
-      shuffleDeck(collectionDeckB)
-      moveDeckA()
-      moveDeckB()
-      moveHostages()
-      if ((playedCardA.length === 1 && hostageDeckA.length === 4) && (playedCardB.length === 1 && hostageDeckB.length === 4)) {
+  } 
+  else if (playingDeckA.length < 3 && playingDeckB.length < 3) {
+    shuffleDeck(collectionDeckA)
+    shuffleDeck(collectionDeckB)
+    moveDeckA()
+    moveDeckB()
+    moveHostages()
+    createAndPlayPlayedCards()
+    if ((playedCardA.length === 1 && hostageDeckA.length === 4) && (playedCardB.length === 1 && hostageDeckB.length === 4)) {
       console.log("Continue!")
-    } else if ((playedCardA.length === 1 && hostageDeckA.length === 4) && (playedCardB.length !== 1 || hostageDeckB.length !== 4)) {
-
+    } 
+    else if ((playedCardA.length === 1 && hostageDeckA.length === 4) && (playedCardB.length !== 1 || hostageDeckB.length !== 4)) {
       aWinsGame()
-    } else if ((playedCardA.length !== 1 || hostageDeckA.length !== 4) && (playedCardB.length === 1 && hostageDeckB.length === 4)) {
-
+    } 
+    else if ((playedCardA.length !== 1 || hostageDeckA.length !== 4) && (playedCardB.length === 1 && hostageDeckB.length === 4)) {
       bWinsGame()
-    } else {
+    } 
+    else {
       returnHostagesAndCardPlayed()
       createAndPlayPlayedCards()
       compareCards()
@@ -345,39 +353,48 @@ function supplyHostages() {
 function supplyDoubleWarHostages () {    
   if (playingDeckA.length >= 6 && playingDeckB.length >= 6) {
     moveHostages()
-  } else if (playingDeckA.length < 6 && playingDeckB.length >= 6) {
+    createAndPlayPlayedCards()
+  } 
+  else if (playingDeckA.length < 6 && playingDeckB.length >= 6) {
     shuffleDeck(collectionDeckA)
     moveDeckA()
     moveHostages()
+    createAndPlayPlayedCards()
     if (playedCardA.length === 1 && hostageDeckA.length === 8) {
       console.log("Continue!")
     } else {
       aWinsGame()
     }
-  } else if (playingDeckA.length >= 6 && playingDeckB.length < 6) {
+  } 
+  else if (playingDeckA.length >= 6 && playingDeckB.length < 6) {
     shuffleDeck(collectionDeckB)
     moveDeckB()
     moveHostages()
+    createAndPlayPlayedCards()
     if (playingCardB.length === 1 && hostageDeckB.length === 8) {
       console.log("Continue!")
-    } else {
+    } 
+    else {
       bWinsGame()
     }
-  } else if (playingDeckA.length < 6 && playingDeckB.length < 6) {
-      shuffleDeck(collectionDeckA)
-      shuffleDeck(collectionDeckB)
-      moveDeckA()
-      moveDeckB()
-      moveHostages()
-      if ((playedCardA.length === 1 && hostageDeckA.length === 8) && (playedCardB.length === 1 && hostageDeckB.length === 8)) {
+  } 
+  else if (playingDeckA.length < 6 && playingDeckB.length < 6) {
+    shuffleDeck(collectionDeckA)
+    shuffleDeck(collectionDeckB)
+    moveDeckA()
+    moveDeckB()
+    moveHostages()
+    createAndPlayPlayedCards()
+    if ((playedCardA.length === 1 && hostageDeckA.length === 8) && (playedCardB.length === 1 && hostageDeckB.length === 8)) {
       console.log("Continue!")
-    } else if ((playedCardA.length === 1 && hostageDeckA.length === 8) && (playedCardB.length !== 1 || hostageDeckB.length !== 8)) {
-
+    } 
+    else if ((playedCardA.length === 1 && hostageDeckA.length === 8) && (playedCardB.length !== 1 || hostageDeckB.length !== 8)) {
       aWinsGame()
-    } else if ((playedCardA.length !== 1 || hostageDeckA.length !== 8) && (playedCardB.length === 1 && hostageDeckB.length === 8)) {
-
+    } 
+    else if ((playedCardA.length !== 1 || hostageDeckA.length !== 8) && (playedCardB.length === 1 && hostageDeckB.length === 8)) {
       bWinsGame()
-    } else {
+    } 
+    else {
       returnHostagesAndCardPlayed()
       createAndPlayPlayedCards()
       compareCards()
@@ -394,15 +411,18 @@ function playerBWins() {
   const cardB = playedCardB.pop()
   collectionDeckB.push(cardA,cardB)
 }
+// functions that move cards
 function winHostagesA() {
   collectionDeckA.push(hostageDeckA[0],hostageDeckA[1],hostageDeckA[2],hostageDeckA[3],hostageDeckB[0],hostageDeckB[1],hostageDeckB[2],hostageDeckB[3])
   hostageDeckA = []
   hostageDeckB = []
+  render()
 }
 function winHostagesB() {
   collectionDeckB.push(hostageDeckA[0],hostageDeckA[1],hostageDeckA[2],hostageDeckA[3],hostageDeckB[0],hostageDeckB[1],hostageDeckB[2],hostageDeckB[3])
   hostageDeckA = []
   hostageDeckB = []
+  render()
 }
 function winDoubleHostagesA() {
   const hostagesA = hostageDeckA
@@ -410,6 +430,7 @@ function winDoubleHostagesA() {
   collectionDeckA.push(hostagesA[0],hostagesA[1],hostagesA[2],hostagesA[3],hostagesA[4],hostagesA[5],hostagesA[6],hostagesA[7],hostagesB[0],hostagesB[1],hostagesB[2],hostagesB[3],hostagesB[4],hostagesB[5],hostagesB[6],hostagesB[7])
   hostageDeckA = []
   hostageDeckB = []
+  render()
 }
 function winDoubleHostagesB() {
   const hostagesA = hostageDeckA
@@ -417,16 +438,15 @@ function winDoubleHostagesB() {
   collectionDeckB.push(hostagesA[0],hostagesA[1],hostagesA[2],hostagesA[3],hostagesA[4],hostagesA[5],hostagesA[6],hostagesA[7],hostagesB[0],hostagesB[1],hostagesB[2],hostagesB[3],hostagesB[4],hostagesB[5],hostagesB[6],hostagesB[7])
   hostageDeckA = []
   hostageDeckB = []
+  render()
 }
 function createAndPlayPlayedCards() {
   const cardA = playingDeckA.shift()
   const cardB = playingDeckB.shift()
   playedCardA.push(cardA)
   playedCardB.push(cardB)
+  render()
 }
-// function playPlayedCards() {
-
-// }
 function returnHostagesAndCardPlayed() {
   const hostagesA = hostageDeckA
   const hostagesB = hostageDeckB
@@ -438,6 +458,7 @@ function returnHostagesAndCardPlayed() {
     playingDeckA.push(hostagesA[3],hostagesA[4],hostagesA[5],)
     playingDeckB.push(hostagesB[3],hostagesB[4],hostagesB[5],)
   }
+  render()
 }
 function moveDeckA() {
   playingDeckA = collectionDeckA
@@ -447,15 +468,17 @@ function moveDeckA() {
       playingDeckA.splice([object], 1)
     }
   })
+  render()
 }
 function moveDeckB() {
   playingDeckB = collectionDeckB
   collectionDeckB = []
-  playingDeckA.forEach(function(object) {
-    if (playingDeckA[object] === {}) {
-      playingDeckA.splice([object], 1)
+  playingDeckB.forEach(function(object) {
+    if (playingDeckB[object] === {}) {
+      playingDeckB.splice([object], 1)
     }
   })
+  render()
 }
 function moveHostages(){
 const hostagesA = playingDeckA.splice(0,3)
@@ -466,13 +489,182 @@ hostageDeckA.push(hostagesA[0],hostagesA[1],hostagesA[2])
 hostageDeckA.push(cardA)
 hostageDeckB.push(hostagesB[0],hostagesB[1],hostagesB[2],)
 hostageDeckB.push(cardB)
+render()
 }
 
 // Rendering
 
-function render(card, deck) {
-  if (deck.length < 6) {
-
-  }
-
+function render(cardPicked) {
+  renderPlayingDeckA()
+  renderPlayingDeckB()
+  renderPlayedCardA()
+  renderPlayedCardB()
+  renderHostageDeckA()
+  renderHostageDeckB()
+  renderCollectionDeckA()
+  renderCollectionDeckB()
 }
+function renderPlayingDeckA() {
+  if (playingDeckA.length === 0) {
+    playingDeckAEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    playingDeckAEl.classList.add('outline')
+  }
+  else if(playingDeckA.length !== 0 && playingDeckA.length < 12) {
+    playingDeckAEl.classList.remove('shadow','outline','darkerShadow')
+    playingDeckAEl.classList.add('lighterShadow','back-blue')
+  }
+  else if(playingDeckA.length >= 6 && playingDeckA.length < 24){
+    playingDeckAEl.classList.remove('outline','lighterShadow','darkerShadow')
+    playingDeckAEl.classList.add('shadow','back-blue')
+  }
+  else if(playingDeckA.length >= 6 && playingDeckA.length < 36){
+    playingDeckAEl.classList.remove('shadow','lighterShadow','outline')
+    playingDeckAEl.classList.add('darkerShadow','back-blue')
+  }
+}
+function renderPlayingDeckB() {
+  if (playingDeckB.length === 0) {
+    playingDeckBEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    playingDeckBEl.classList.add('outline')
+  }
+  else if(playingDeckB.length !== 0 && playingDeckB.length < 12) {
+    playingDeckBEl.classList.remove('shadow','outline','darkerShadow')
+    playingDeckBEl.classList.add('lighterShadow','back-blue')
+  }
+  else if(playingDeckB.length >= 6 && playingDeckB.length < 24){
+    playingDeckBEl.classList.remove('outline','lighterShadow','darkerShadow')
+    playingDeckBEl.classList.add('shadow','back-blue')
+  }
+  else if(playingDeckB.length >= 6 && playingDeckB.length < 36){
+    playingDeckBEl.classList.remove('shadow','lighterShadow','outline')
+    playingDeckBEl.classList.add('darkerShadow','back-blue')
+  }
+}
+function renderPlayedCardA() {
+  if (playedCardA.length === 0) {
+    playedCardAEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    playedCardAEl.classList.add('outline')
+  }
+  else if(playedCardA.length !== 0 && playedCardA.length < 12) {
+    playedCardAEl.classList.remove('shadow','outline','darkerShadow')
+    playedCardAEl.classList.add('lighterShadow','back-blue')
+  }
+  else if(playedCardA.length >= 6 && playedCardA.length < 24){
+    playedCardAEl.classList.remove('outline','lighterShadow','darkerShadow')
+    playedCardAEl.classList.add('shadow','back-blue')
+  }
+  else if(playedCardA.length >= 6 && playedCardA.length < 36){
+    playedCardAEl.classList.remove('shadow','lighterShadow','outline')
+    playedCardAEl.classList.add('darkerShadow','back-blue')
+  }
+}
+function renderPlayedCardB() {
+  if (playedCardB.length === 0) {
+    playedCardBEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    playedCardBEl.classList.add('outline')
+  }
+  else if(playedCardB.length !== 0 && playedCardB.length < 12) {
+    playedCardBEl.classList.remove('shadow','outline','darkerShadow')
+    playedCardBEl.classList.add('lighterShadow','back-blue')
+  }
+  else if(playedCardB.length >= 6 && playedCardB.length < 24){
+    playedCardBEl.classList.remove('outline','lighterShadow','darkerShadow')
+    playedCardBEl.classList.add('shadow','back-blue')
+  }
+  else if(playedCardB.length >= 6 && playedCardB.length < 36){
+    playedCardBEl.classList.remove('shadow','lighterShadow','outline')
+    playedCardBEl.classList.add('darkerShadow','back-blue')
+  }
+}
+function renderHostageDeckA() {
+  if (hostageDeckA.length === 0) {
+    hostageDeckAEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    hostageDeckAEl.classList.add('outline')
+  }
+  else if(hostageDeckA.length !== 0 && hostageDeckA.length < 12) {
+    hostageDeckAEl.classList.remove('shadow','outline','darkerShadow')
+    hostageDeckAEl.classList.add('lighterShadow','back-blue')
+  }
+  else if(hostageDeckA.length >= 6 && hostageDeckA.length < 24){
+    hostageDeckAEl.classList.remove('outline','lighterShadow','darkerShadow')
+    hostageDeckAEl.classList.add('shadow','back-blue')
+  }
+  else if(hostageDeckA.length >= 6 && hostageDeckA.length < 36){
+    hostageDeckAEl.classList.remove('shadow','lighterShadow','outline')
+    hostageDeckAEl.classList.add('darkerShadow','back-blue')
+  }
+}
+function renderHostageDeckB() {
+  if (hostageDeckB.length === 0) {
+    hostageDeckBEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    hostageDeckBEl.classList.add('outline')
+  }
+  else if(hostageDeckB.length !== 0 && hostageDeckB.length < 12) {
+    hostageDeckBEl.classList.remove('shadow','outline','darkerShadow')
+    hostageDeckBEl.classList.add('lighterShadow','back-blue')
+  }
+  else if(hostageDeckB.length >= 6 && hostageDeckB.length < 24){
+    hostageDeckBEl.classList.remove('outline','lighterShadow','darkerShadow')
+    hostageDeckBEl.classList.add('shadow','back-blue')
+  }
+  else if(hostageDeckB.length >= 6 && hostageDeckB.length < 36){
+    hostageDeckBEl.classList.remove('shadow','lighterShadow','outline')
+    hostageDeckBEl.classList.add('darkerShadow','back-blue')
+  }
+}
+function renderCollectionDeckA() {
+  if (collectionDeckA.length === 0) {
+    collectionDeckAEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    collectionDeckAEl.classList.add('outline')
+  }
+  else if(collectionDeckA.length !== 0 && collectionDeckA.length < 12) {
+    collectionDeckAEl.classList.remove('shadow','outline','darkerShadow')
+    collectionDeckAEl.classList.add('lighterShadow','back-blue')
+  }
+  else if(collectionDeckA.length >= 6 && collectionDeckA.length < 24){
+    collectionDeckAEl.classList.remove('outline','lighterShadow','darkerShadow')
+    collectionDeckAEl.classList.add('shadow','back-blue')
+  }
+  else if(collectionDeckA.length >= 6 && collectionDeckA.length < 36){
+    collectionDeckAEl.classList.remove('shadow','lighterShadow','outline')
+    collectionDeckAEl.classList.add('darkerShadow','back-blue')
+  }
+}
+function renderCollectionDeckB() {
+  if (collectionDeckB.length === 0) {
+    collectionDeckBEl.classList.remove('shadow','lighterShadow','darkerShadow')
+    collectionDeckBEl.classList.add('outline')
+  }
+  else if(collectionDeckB.length !== 0 && collectionDeckB.length < 12) {
+    collectionDeckBEl.classList.remove('shadow','outline','darkerShadow')
+    collectionDeckBEl.classList.add('lighterShadow','back-blue')
+  }
+  else if(collectionDeckB.length >= 6 && collectionDeckB.length < 24){
+    collectionDeckBEl.classList.remove('outline','lighterShadow','darkerShadow')
+    collectionDeckBEl.classList.add('shadow','back-blue')
+  }
+  else if(collectionDeckB.length >= 6 && collectionDeckB.length < 36){
+    collectionDeckBEl.classList.remove('shadow','lighterShadow','outline')
+    collectionDeckBEl.classList.add('darkerShadow','back-blue')
+  }
+}
+// // variables
+// let playingDeckA = []
+// let playedCardA = []
+// let hostageDeckA = []
+// let collectionDeckA = []
+// let playingDeckB = []
+// let playedCardB = []
+// let hostageDeckB = []
+// let collectionDeckB = []
+
+// let startingDeck = []
+// // cached references
+// let playingDeckAEl = document.getElementById('playingDeckA')
+// let playedCardAEl = document.getElementById('playedCardA')
+// let hostageDeckAEl = document.getElementById('hostageDeckA')
+// let collectionDeckAEl = document.getElementById('collectionDeckA')
+// let playingDeckBEl = document.getElementById('playingDeckB')
+// let playedCardBEl = document.getElementById('playedCardB')
+// let hostageDeckBEl = document.getElementById('hostageDeckB')
+// let collectionDeckBEl = document.getElementById('collectionDeckB')

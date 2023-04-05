@@ -42,7 +42,25 @@
   // hostagesB.forEach(function(card) {
   //   collectionDeckB.push(hostagesB[card.value-1])
   // })
+// function shuffleCollectionDeckA() {
+//   if (collectionDeckA.length !== 0) {
+//     shuffleDeck(collectionDeckA)
+//     playingDeckA = collectionDeckA
+//     collectionDeckA = []
+//   } else {
+//     bWinsGame()
+//   }
+// }
 
+// function shuffleCollectionDeckB() {
+  // if (collectionDeckB !== 0) {
+  //   shuffleDeck(collectionDeckB)
+  //   playingDeckB = collectionDeckB
+  //   collectionDeckB = []
+  // } else {
+  //   aWinsGame()
+  // }
+// }
 function moveDeck(pDeck,cDeck) {
     console.log(playingDeckA,collectionDeckA)
     pDeck = cDeck
@@ -62,3 +80,4 @@ function moveDeckB() {
 }
 moveDeckA()
 moveDeckB()
+
