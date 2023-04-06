@@ -31,15 +31,23 @@ body {
 .card.darkerShadow {
   box-shadow: 7px 7px 7px 0 rgba(90, 90, 90, 0.95) !important;
 }
-
-
-
+.card.blank {
+  background-image: none;
+}
 
 .btn {
+  display: flex;
+  display: inline-block;
   margin-top: 2vh;
   color: white;
   background-color: #202d7a;
   font-weight: bold;
   border: 2px solid #202d7a;
+  height: 50px;
+  width: 200px;
 }
 
+.hover {
+  color: #202d7a;
+  background-color: aqua;
+}
