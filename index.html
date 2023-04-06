@@ -7,25 +7,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="./css/cardstarterwar.css">
   <link rel="stylesheet" href="./css/style.css">
-  <script defer src="./js/app.js"></script>
+  <script defer src="./js/newapp.js"></script>
   <title>Document</title>
 </head>
 <body>
-  <div class="container">
-    <div id="playingDeckA" class="card large back-blue"></div>
-    <div id="playedCardA" class="card large outline"></div>
-    <!-- <div id="hostageDeckA" class="card large outline"></div> -->
-    <!-- <div id="collectionDeckA" class="card large outline"></div> -->
+  <div class="container1">
+    <div id="drawPileA" class="card large back-blue"></div>
   </div>
-  <div class="container">
-    <div id="playingDeckB" class="card large back-blue"></div>
-    <div id="playedCardB" class="card large outline"></div>
-    <!-- <div id="hostageDeckB" class="card large outline"></div> -->
-    <!-- <div id="collectionDeckB" class="card large outline"></div> -->
+  <div class="container2">
+    <div id="battleFieldA" class="card large outline animate__animated animate__flipInY"></div>
+    <div id="hostageDeck" class="card large outline"></div>
+    <div id="battleFieldB" class="card large outline animate__animated animate__flipInY"></div>
   </div>
-  <button id="startBtn" class="btn">Start</button>
-  <button id="playCardsBtn" class="btn">Play Soldier</button>
-  <button id="takeCardsBtn" class="btn">Take</button>
-  <button id="resetBtn" class="btn">Reset</button>
+  <div class="container3">
+    <div id="drawPileB" class="card large back-blue"></div>
+  </div>
+  <div>
+  </div id="btns">
+    <button id="startBtn" class="btn">Start</button>
+    <button id="playCardsBtn" class="btn">Play Soldier</button>
+    <button id="takeCardsBtn" class="btn">Take</button>
+    <button id="resetBtn" class="btn">Reset</button>
+  </div>
 </body>
 </html>

@@ -12,7 +12,12 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 }
+#drawPileA {
+  margin-top: 100px
+}
+
 
 .card {
   margin: 3vh;
@@ -35,16 +40,25 @@ body {
   background-image: none;
 }
 
-.btn {
+
+
+#btns {
   display: flex;
+  height: 300px;
   flex-direction: row;
+}
+
+.btn {
   margin-top: 2vh;
   color: white;
   background-color: #202d7a;
   font-weight: bold;
   border: 2px solid #202d7a;
-  height: 50px;
+  height: 400px;
   width: 200px;
+  border-radius: 30px;
+  justify-content: center;
+  padding: 50px 0;
 }
 
 .hover {
