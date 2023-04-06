@@ -35,19 +35,17 @@ startBtnEl.addEventListener(`click`, function() {
 })
 playCardsBtnEl.addEventListener(`click`, function() {
   playCards()
-  console.log(playingDeckA,playingDeckB,playedCardA,playedCardB,hostageDeckA,hostageDeckB,collectionDeckA,collectionDeckB)
   renderPlayingDecks()
-  console.log(playingDeckA,playingDeckB,playedCardA,playedCardB,hostageDeckA,hostageDeckB,collectionDeckA,collectionDeckB)
   renderSoldiers()
-  console.log(playingDeckA,playingDeckB,playedCardA,playedCardB,hostageDeckA,hostageDeckB,collectionDeckA,collectionDeckB)
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = false
 })
 takeCardsBtnEl.addEventListener(`click`, function() {
   compareCards()
-  console.log(playingDeckA,playingDeckB,playedCardA,playedCardB,hostageDeckA,hostageDeckB,collectionDeckA,collectionDeckB)
-  takeCardsBtnEl.disable = true
+  takeCardsBtnEl.disabled = true
   playCardsBtnEl.disabled = false
+  console.log(playingDeckA,playingDeckB)
+  
 })
 resetBtnEl.addEventListener(`click`, function() {
 
@@ -152,17 +150,12 @@ function handleStart() {
   playingDeckB = startingDeck.splice(0,26)
 }
 function playCards() {
-  console.log(playingDeckA,playingDeckB,playedCardA,playedCardB,hostageDeckA,hostageDeckB,collectionDeckA,collectionDeckB)
   shuffleAndMoveDeck()
-  console.log(playingDeckA,playingDeckB,playedCardA,playedCardB,hostageDeckA,hostageDeckB,collectionDeckA,collectionDeckB)
   //if both players can draw from their pile
   if (playingDeckA.length !== 0 && playingDeckB.length !== 0) {
-    
-    let soldierA = playingDeckA[0]
-    let soldierB = playingDeckB[0]
-    wasteA = playedCardA.push(soldierA)
-    wasteB = playedCardB.push(soldierB)
-    
+    playedCardA = playingDeckA.splice(0,1)
+    playedCardB = playingDeckB.splice(0,1)
+    console.log(playingDeckA,playingDeckB,playedCardA,playedCardB,hostageDeckA,hostageDeckB,collectionDeckA,collectionDeckB)
   }
   //if B's draw pile is empty
   else if (playingDeckA.length !== 0 && playingDeckB.length === 0) {
@@ -177,29 +170,29 @@ function playCards() {
   }
 }
 function compareCards() {
-  
   soldierAWins = playedCardA[0].value > playedCardB[0].value
   soldierBWins = playedCardA[0].value < playedCardB[0].value
   soldiersTie = playedCardA[0].value === playedCardB[0].value
   
-  if (soldierAWins) {
+  if (playedCardA[0].value > playedCardB[0].value) {
     aWinsDuel()
     renderSoldiers()
   }
-  else if (soldierBWins) {
+  else if (playedCardA[0].value < playedCardB[0].value) {
     bWinsDuel()
     renderSoldiers()
   }
   else {
     //War!!
+    debugger
     war()
-    if (soldierAWins) {
+    if (playedCardA[0].value > playedCardB[0].value) {
       let allHostagesA = hostageDeckA
       let allHostagesB = hostageDeckB
       const waste = collectionDeckA.push(allHostagesA,allHostagesB)
       aWinsDuel()
     }
-    else if (soldierBWins) {
+    else if (playedCardA[0].value < playedCardB[0].value) {
       let allHostagesA = hostageDeckA
       let allHostagesB = hostageDeckB
       const waste = collectionDeckB.push(allHostagesA,allHostagesB)
@@ -207,14 +200,15 @@ function compareCards() {
     }
     else {
       //Double War!!
+      debugger
       war()
-      if(soldierAWins) {
+      if(playedCardA[0].value > playedCardB[0].value) {
         let allHostagesA = hostageDeckA
         let allHostagesB = hostageDeckB
         const waste = collectionDeckA.push(allHostagesA,allHostagesB)
         aWinsDuel()
       }
-      else if (soldierBWins) {
+      else if (playedCardA[0].value < playedCardB[0].value) {
         let allHostagesA = hostageDeckA
         let allHostagesB = hostageDeckB
         const waste = collectionDeckB.push(allHostagesA,allHostagesB)
@@ -222,6 +216,7 @@ function compareCards() {
       }
       else {
         //Triple War!!
+        debugger
         console.log("Ceasefire! The War is over!")
         tieGame()
       }
@@ -229,28 +224,34 @@ function compareCards() {
   }
 }
 function aWinsDuel() {
-  const cardA = playedCardA.pop()
-  const cardB = playedCardB.pop()
-  const extra = collectionDeckA.push(cardA,cardB)
-  playedCardA = []
-  playedCardB = []
+  console.log('A Wins Duel')
+  const cardA = collectionDeckA.concat(playedCardA)
+  collectionDeckA = cardA
+  const cardB = collectionDeckA.concat(playedCardB)
+  collectionDeckA = cardB
 }
 function bWinsDuel() {
-  const cardA = playedCardA.pop()
-  const cardB = playedCardB.pop()
-  const extra = collectionDeckB.push(cardA,cardB)
-  playedCardA = []
-  playedCardB = []
+  console.log('B Wins Duel')  
+  const cardA = collectionDeckB.concat(playedCardA)
+  collectionDeckB = cardA
+  const cardB = collectionDeckB.concat(playedCardB)
+  collectionDeckB = cardB
 }
 function supplyHostages() {
   shuffleAndMoveDeck()
   if (playingDeckA.length >= 3 && playingDeckB.length >= 3) {
-    let soldierA = playedCardA
-    let soldierB = playedCardB
     let hostagesA = playingDeckA.splice(0,3)
     let hostagesB = playingDeckB.splice(0,3)
-    let wasteA = hostageDeckA.push(soldierA, hostagesA)
-    let wasteB = hostageDeckB.push(soldierB, hostagesB)
+    let hA1 = hostageDeckA.concat(hostagesA)
+    hostageDeckA = hA1
+    let hB1 = hostageDeckB.concat(hostagesB)
+    hostageDeckB = hB1
+    let hA2 = hostageDeckA.concat(playedCardA)
+    hostageDeckA = hA2
+    let hB2 = hostageDeckB.concat(playedCardB)
+    hostageDeckB = hB2
+    playedCardA = []
+    playedCardB = []
   } 
   else if (playingDeckA.length >= 3 && playingDeckB.length < 3){
     aWinsGame()
@@ -271,26 +272,24 @@ function supplyHostages() {
   }
 }
 function shuffleAndMoveDeck() {
-  shuffleDeck(collectionDeckA)
-  shuffleDeck(collectionDeckB)
-  console.log(playingDeckA,playingDeckB,playedCardA,playedCardB,hostageDeckA,hostageDeckB,collectionDeckA,collectionDeckB)
-  let wasteA = playingDeckA.push(collectionDeckA)
-  let wasteB = playingDeckB.push(collectionDeckB)
-  playingDeckA.pop()
-  playingDeckB.pop()
-  console.log(playingDeckA,playingDeckB,playedCardA,playedCardB,hostageDeckA,hostageDeckB,collectionDeckA,collectionDeckB)
-  playingDeckA.forEach(function(object) {
-    if (playingDeckA[object] === []) {
-      playingDeckA.splice([object], 1)
-    }
-  })
-  playingDeckB.forEach(function(object) {
-    if (playingDeckB[object] === []) {
-      playingDeckB.splice([object], 1)
-    }
-  })
-
-
+  if (collectionDeckA.length !== 0 && collectionDeckB.length !== 0) {
+    shuffleDeck(collectionDeckA)
+    shuffleDeck(collectionDeckB)
+    const cardsA = playingDeckA.concat(collectionDeckA)
+    const cardsB = playingDeckB.concat(collectionDeckB)
+    playingDeckA = cardsA
+    playingDeckB = cardsB
+  }
+  else if (collectionDeckA.length !== 0 && collectionDeckB.length === 0) {
+    shuffleDeck(collectionDeckA)
+    const cardsA = playingDeckA.concat(collectionDeckA)
+    playingDeckA = cardsA
+  }
+  else if (collectionDeckA.length === 0 && collectionDeckB.length !== 0) {
+    shuffleDeck(collectionDeckB)
+    const cardsB = playingDeckB.concat(collectionDeckB)
+    playingDeckB = cardsB
+  }
   collectionDeckA = []
   collectionDeckB = []
 }
@@ -314,7 +313,6 @@ function bWinsGame() {
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = true
 }
-
 
 // render functions
 
@@ -365,8 +363,7 @@ function renderSoldiers(){
     playedCardBEl.classList.remove('outline','blank')
   } else {
     playedCardAEl.classList.add('outline','blank')
+    playedCardAEl.setAttribute('card.large.blank','')
     playedCardBEl.classList.add('outline','blank')
   }
-
 }
-

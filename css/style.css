@@ -37,7 +37,7 @@ body {
 
 .btn {
   display: flex;
-  display: inline-block;
+  flex-direction: row;
   margin-top: 2vh;
   color: white;
   background-color: #202d7a;
