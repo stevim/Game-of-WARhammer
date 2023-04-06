@@ -44,7 +44,7 @@ takeCardsBtnEl.addEventListener(`click`, function() {
   compareCards()
   takeCardsBtnEl.disabled = true
   playCardsBtnEl.disabled = false
-  console.log(playingDeckA,playingDeckB)
+  console.log(playingDeckA,playingDeckB,collectionDeckA,collectionDeckB)
   
 })
 resetBtnEl.addEventListener(`click`, function() {
@@ -170,32 +170,25 @@ function playCards() {
   }
 }
 function compareCards() {
-  soldierAWins = playedCardA[0].value > playedCardB[0].value
-  soldierBWins = playedCardA[0].value < playedCardB[0].value
-  soldiersTie = playedCardA[0].value === playedCardB[0].value
-  
   if (playedCardA[0].value > playedCardB[0].value) {
     aWinsDuel()
-    renderSoldiers()
+    // renderSoldiers()
   }
   else if (playedCardA[0].value < playedCardB[0].value) {
     bWinsDuel()
-    renderSoldiers()
+    // renderSoldiers()
   }
   else {
     //War!!
-    debugger
     war()
     if (playedCardA[0].value > playedCardB[0].value) {
-      let allHostagesA = hostageDeckA
-      let allHostagesB = hostageDeckB
-      const waste = collectionDeckA.push(allHostagesA,allHostagesB)
+      let allHostages = collectionDeckA.concat(hostageDeckA,hostageDeckB)
+      collectionDeckA = allHostages
       aWinsDuel()
     }
     else if (playedCardA[0].value < playedCardB[0].value) {
-      let allHostagesA = hostageDeckA
-      let allHostagesB = hostageDeckB
-      const waste = collectionDeckB.push(allHostagesA,allHostagesB)
+      let allHostages = collectionDeckB.concat(hostageDeckA,hostageDeckB)
+      collectionDeckB = allHostages
       bWinsDuel()
     }
     else {
@@ -203,6 +196,9 @@ function compareCards() {
       debugger
       war()
       if(playedCardA[0].value > playedCardB[0].value) {
+        let allHostages = collectionDeckA.concat(hostageDeckA,hostageDeckB)
+        collectionDeckA = allHostages
+        
         let allHostagesA = hostageDeckA
         let allHostagesB = hostageDeckB
         const waste = collectionDeckA.push(allHostagesA,allHostagesB)
@@ -229,6 +225,7 @@ function aWinsDuel() {
   collectionDeckA = cardA
   const cardB = collectionDeckA.concat(playedCardB)
   collectionDeckA = cardB
+  renderEmptySoldiers()
 }
 function bWinsDuel() {
   console.log('B Wins Duel')  
@@ -236,6 +233,7 @@ function bWinsDuel() {
   collectionDeckB = cardA
   const cardB = collectionDeckB.concat(playedCardB)
   collectionDeckB = cardB
+  renderEmptySoldiers()
 }
 function supplyHostages() {
   shuffleAndMoveDeck()
@@ -294,6 +292,7 @@ function shuffleAndMoveDeck() {
   collectionDeckB = []
 }
 function war() {
+  console.log("War!")
   supplyHostages()
   renderSoldiers()
   playCards()
@@ -362,8 +361,20 @@ function renderSoldiers(){
     playedCardAEl.classList.remove('outline','blank')
     playedCardBEl.classList.remove('outline','blank')
   } else {
-    playedCardAEl.classList.add('outline','blank')
-    playedCardAEl.setAttribute('card.large.blank','')
-    playedCardBEl.classList.add('outline','blank')
+    // playedCardAEl.classList.add('outline','blank')
+    // playedCardAEl.remove('shadow','lighterShadow','darkerShadow')
+    // playedCardBEl.classList.add('outline','blank')
+    // playedCardBEl.remove('shadow','lighterShadow','darkerShadow')
   }
+}
+
+function renderEmptySoldiers() {
+  let soldierA = playedCardA
+  let soldierB = playedCardB
+  let soldierAImage = soldierA[0].title
+  let soldierBImage = soldierB[0].title
+  playedCardAEl.classList.add('outline','blank')
+  playedCardAEl.classList.remove('shadow','lighterShadow','darkerShadow',soldierAImage)
+  playedCardBEl.classList.add('outline','blank')
+  playedCardBEl.classList.remove('shadow','lighterShadow','darkerShadow',soldierBImage)
 }
