@@ -219,6 +219,7 @@ function aWinsDuel() {
   const winnings = drawPileA.concat(battleFieldA,battleFieldB)
   drawPileA = winnings
   clearBattleField()
+  renderEmptyHostages
 }
 function bWinsDuel() {
   renderEmptySoldiers()
@@ -226,6 +227,7 @@ function bWinsDuel() {
   const winnings = drawPileB.concat(battleFieldA,battleFieldB)
   drawPileB = winnings
   clearBattleField()
+  renderEmptyHostages
 }
 function supplyHostages() {
   if (drawPileA.length >= 3 && drawPileB.length >= 3) {
@@ -233,6 +235,7 @@ function supplyHostages() {
     let hostagesB = drawPileB.splice(0,3)
     let allHostages = hostageDeck.concat(hostagesA,hostagesB,battleFieldA,battleFieldB)
     hostageDeck = allHostages
+    renderHostages()
     renderEmptySoldiers()
     clearBattleField()
   } 
@@ -340,4 +343,12 @@ function renderEmptySoldiers() {
   battleFieldBEl.classList.add('outline','blank')
   battleFieldBEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue',soldierBImage)
 
+}
+function renderHostages() {
+  hostageDeckEl.classList.add('back-blue','lighterShadow')
+  hostageDeckEl.classList.remove('outline')
+}
+function renderEmptyHostages() {
+  hostageDeckEl.classList.add('outline','blank')
+  hostageDeckEl.classList,renderEmptyHostages('back-blue','lighterShadow')
 }
