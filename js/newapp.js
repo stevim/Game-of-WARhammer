@@ -27,9 +27,7 @@ startBtnEl.addEventListener(`click`, function() {
   console.log(drawPileA,drawPileB)
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = false
-  const music = new Audio("/battlemusic.mp3")
-  music.volume = .02
-  music.play()
+
 })
 playCardsBtnEl.addEventListener(`click`, function() {
   playCards()
@@ -179,9 +177,11 @@ function playCards() {
 function compareCards() {
   if (battleFieldA[0].value > battleFieldB[0].value) {
     aWinsDuel()
+    messageEl.innerHTML = "You won this battle!"
   }
   else if (battleFieldA[0].value < battleFieldB[0].value) {
     bWinsDuel()
+    messageEl.innerHTML = "You lost this battle!"
   }
   else {
     //War!!
@@ -233,7 +233,6 @@ function aWinsDuel() {
   const winnings = drawPileA.concat(battleFieldA,battleFieldB)
   drawPileA = winnings
   clearBattleField()
-  messageEl.innerHTML = "You won this battle!"
 }
 function bWinsDuel() {
   console.log(battleFieldA,battleFieldB)  
@@ -242,7 +241,6 @@ function bWinsDuel() {
   const winnings = drawPileB.concat(battleFieldA,battleFieldB)
   drawPileB = winnings
   clearBattleField()
-  messageEl.innerHTML = "You lost this battle!"
 }
 function supplyHostages() {
   if (drawPileA.length >= 3 && drawPileB.length >= 3) {

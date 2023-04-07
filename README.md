@@ -1,7 +1,7 @@
-Game of WARhammer
-
 Game of War - Card Game
-Theme - Warhammer 40k (subject to change)
-  other possible ideas - dwarves vs elves (Gimli vs Legolas)
+Theme - Pokemon
+
+Objective:
+Click here to play the game
 
 
