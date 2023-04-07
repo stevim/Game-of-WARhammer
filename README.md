@@ -27,6 +27,6 @@ The [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) m
 * animate.css
 
 ## Icebox(Next Steps):
-*Render additional soldiers during 'war'
+* Render additional soldiers during 'war'
 * Add additional CSS styling to acommodate different window sizes
 
