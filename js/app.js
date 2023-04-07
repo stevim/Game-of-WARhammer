@@ -6,6 +6,16 @@ let hostageDeck = []
 
 let startingDeck = []
 
+const battleMusic = new Audio("../battlemusic.mp3")
+function playMusic() {
+  battleMusic.play()
+  battleMusic.volume = 0.01
+}
+function stopMusic() {
+  battleMusic.pause()
+  battleMusic.currentTime = 0
+}
+
 let drawPileAEl = document.getElementById('drawPileA')
 let battleFieldAEl = document.getElementById('battleFieldA')
 let drawPileBEl = document.getElementById('drawPileB')
@@ -26,6 +36,7 @@ startBtnEl.addEventListener("click", function() {
   startBtnEl.classList.remove("hover")
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = false
+  playMusic()
 })
 playCardsBtnEl.addEventListener("click", function() {
   playCards()
@@ -52,6 +63,7 @@ resetBtnEl.addEventListener("click", function() {
   startBtnEl.disabled = false
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = true
+  stopMusic()
 })
 startBtnEl.addEventListener("mouseover", function() {
   startBtnEl.classList.add("hover")
