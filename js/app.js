@@ -10,7 +10,7 @@ let drawPileAEl = document.getElementById('drawPileA')
 let battleFieldAEl = document.getElementById('battleFieldA')
 let drawPileBEl = document.getElementById('drawPileB')
 let battleFieldBEl = document.getElementById('battleFieldB')
-let hostageDeckEl = document.getElementById('hostageDeck')
+
 let messageEl = document.getElementById('message')
 
 let startBtnEl = document.getElementById('startBtn')
@@ -288,9 +288,7 @@ function resetGame() {
   hostageDeck = []
   messageEl.innerHTML = "Welcome"
 }
-
 // render functions
-
 function renderSoldiers(){
   if (battleFieldA.length === 1) {
     let soldierA = battleFieldA[0].title
