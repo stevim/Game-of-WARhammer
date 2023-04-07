@@ -31,17 +31,15 @@
   .card.large {
     font-size: 26px; }
   .card.xlarge {
-    font-size: 42px; }
+    font-size: 50px; }
   .card.no-border {
     border: 0; }
   .card.shadow {
     box-shadow: 2px 2px 3px 0 rgba(41, 41, 41, 0.75); }
   .card.lighterShadow {
-    box-shadow: 2px 2px 3px 0 rgba(10, 10, 10, 0.95) !important;
-  }
+    box-shadow: 2px 2px 3px 0 rgba(10, 10, 10, 0.95) !important;}
   .card.darkerShadow {
-    box-shadow: 7px 7px 7px 0 rgba(90, 90, 90, 0.95) !important;
-  }
+    box-shadow: 7px 7px 7px 0 rgba(90, 90, 90, 0.95) !important;}
   .card.outline {
     background-image: none;
     background-color: rgba(195, 195, 195, 0.5);

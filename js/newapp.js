@@ -22,7 +22,6 @@ let btnEl = document.querySelectorAll('.btn')
 startBtnEl.addEventListener(`click`, function() {
   shuffleDeck(startingDeck)
   handleStart()
-  renderPlayingDecks()
   console.log(drawPileA,drawPileB)
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = false
@@ -286,19 +285,19 @@ function clearBattleField() {
 function renderPlayingDecks(){
   if (drawPileA.length === 0) {
     drawPileAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
-    battleFieldAEl.classList.add('drawPileBEl')
+    drawPileAEl.classList.add('outline')
   }
   else if(drawPileA.length !== 0 && drawPileA.length < 12) {
     drawPileAEl.classList.remove('shadow','outline','darkerShadow')
-    battleFieldAEl.classList.add('lighterShadow','back-drawPileBEl')
+    drawPileAEl.classList.add('lighterShadow','back-blue')
   }
   else if(drawPileA.length >= 6 && drawPileA.length < 24){
     drawPileAEl.classList.remove('outline','lighterShadow','darkerShadow')
-    battleFieldAEl.classList.add('shadow','back-drawPileBEl')
+    drawPileAEl.classList.add('shadow','back-blue')
   }
   else {
     drawPileAEl.classList.remove('shadow','lighterShadow','outline')
-    battleFieldAEl.classList.add('darkerShadow','back-drawPileBEl')
+    drawPileAEl.classList.add('darkerShadow','back-blue')
   }
 
   if (drawPileB.length === 0) {
@@ -319,22 +318,26 @@ function renderPlayingDecks(){
   }
 }
 function renderSoldiers(){
+
   if (battleFieldA.length === 1) {
     let soldierA = battleFieldA[0].title
     let soldierB = battleFieldB[0].title
     battleFieldAEl.classList.add(soldierA)
     battleFieldBEl.classList.add(soldierB)
-    battleFieldAEl.classList.remove('outline','blank')
-    battleFieldBEl.classList.remove('outline','blank')
+    battleFieldAEl.classList.remove('outline','blank','back-blue')
+    battleFieldBEl.classList.remove('outline','blank','back-blue')
+
   }
 }
 function renderEmptySoldiers() {
+
   let soldierA = battleFieldA
   let soldierB = battleFieldB
   let soldierAImage = soldierA[0].title
   let soldierBImage = soldierB[0].title
   battleFieldAEl.classList.add('outline','blank')
-  battleFieldAEl.classList.remove('shadow','lighterShadow','darkerShadow',soldierAImage)
+  battleFieldAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue',soldierAImage)
   battleFieldBEl.classList.add('outline','blank')
-  battleFieldBEl.classList.remove('shadow','lighterShadow','darkerShadow',soldierBImage)
+  battleFieldBEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue',soldierBImage)
+
 }
