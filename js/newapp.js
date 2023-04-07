@@ -19,12 +19,17 @@ let takeCardsBtnEl = document.getElementById("takeCardsBtn")
 let resetBtnEl = document.getElementById('resetBtn')
 let btnEl = document.querySelectorAll('.btn')
 
+
+
 startBtnEl.addEventListener(`click`, function() {
   shuffleDeck(startingDeck)
   handleStart()
   console.log(drawPileA,drawPileB)
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = false
+  const music = new Audio("/battlemusic.mp3")
+  music.volume = .02
+  music.play()
 })
 playCardsBtnEl.addEventListener(`click`, function() {
   playCards()
