@@ -9,7 +9,7 @@ let startingDeck = []
 const battleMusic = new Audio("../battlemusic.mp3")
 function playMusic() {
   battleMusic.play()
-  battleMusic.volume = 0.01
+  battleMusic.volume = 0.005
 }
 function stopMusic() {
   battleMusic.pause()

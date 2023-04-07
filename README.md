@@ -15,7 +15,7 @@ Click [here](https://pokebattlewar.netlify.app/) to play the game. [Here](https:
 War was one of the first card games I ever learned, which makes it one of the first games I ever learned period. I am testing myself to be able to recreate this classic card game.
 
 ## Attributions:
-The [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) method was used to shuffle my deck. The code in [this](/css/cardstarterwar.css) file as well as [this](/images) images folder was provided by the General Assembly SEI Course. The [Pokemon](https://fonts.google.com/specimen/Press+Start+2P) font was provided by Google Fonts. The classic [Pokemon card back](/images/backs/pokemonCard.png) was created by Nintendo 
+The [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) method was used to shuffle my deck. The code in [this](/css/cardstarterwar.css) file as well as [this](/images) images folder was provided by the General Assembly SEI Course. The [Pokemon](https://fonts.google.com/specimen/Press+Start+2P) font was provided by Google Fonts. The classic [Pokemon card back](/images/backs/pokemonCard.png) was created by Nintendo. The audio file was provided [here](https://downloads.khinsider.com/game-soundtracks/album/pokemon-game-boy-pok-mon-sound-complete-set-play-cd/1-15.%2520Battle%2520%2528Vs.%2520Trainer%2529.mp3). Favicon was drawn by [Nikita Golubev]("https://www.flaticon.com/free-icons/pokemon").
 
 ## Technology Implemented:
 Javascript,
@@ -24,5 +24,6 @@ HTML,
 Git,
 animate.css
 
-## Next Steps:
-Render additional soldiers during 'war', add additional player functionality
+## Icebox(Next Steps):
+Render additional soldiers during 'war', Add additional CSS styling to acommodate different window sizes
+
