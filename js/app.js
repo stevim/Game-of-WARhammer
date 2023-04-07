@@ -44,6 +44,7 @@ playCardsBtnEl.addEventListener("click", function() {
   playCardsBtnEl.classList.remove('hover')
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = false
+  messageEl.innerHTML = "To Battle!"
 })
 takeCardsBtnEl.addEventListener("click", function() {
   compareCards()
@@ -205,7 +206,6 @@ function compareCards() {
       bWinsDuel()
     }
     else {
-      debugger
       messageEl.innerHTML = "Double War!"
       war()
       if(battleFieldA[0].value > battleFieldB[0].value) {
@@ -222,7 +222,6 @@ function compareCards() {
       }
       else {
         messageEl.innerHTML = "Triple War!"
-        debugger
         tieGame()
       }
     }
