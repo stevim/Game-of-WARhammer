@@ -6,7 +6,9 @@
 ### Theme - Pokemon
 
 ## Objective: 
-Create the card game "War" as a browser-based game. The game of war is a simple card game that follows a defined game logic.
+Create the card game "War" as a browser-based game. The game of war is a simple card game that follows a defined game logic. The premise of the game is simple, each player receives half of the deck after it has been shuffled. Both players will play a card, and the player that played the higher card takes both cards. This continues until a player has run out of cards and loses the game. The namesake of the game occurs when both players play the same number card. This then triggers a "War", where both players provide three additional hostages, and play another card to resolve the "War". If this happens three times in a row, a "Triple War", then the game is a draw and it is over.
+
+In my version of this game, Aces are considered to be the lowest card, while King is the hightest
 
 ## To Play the Game:
 Click [here](https://pokebattlewar.netlify.app/) to play the game. [Here](https://docs.google.com/document/d/1FDr_7BSE_S3VJ1-ZaaZ_GNyVKIOpr0I7Nviz1j0aIv8/edit) is a link to my pseudocode
