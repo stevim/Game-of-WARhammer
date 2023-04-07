@@ -20,7 +20,7 @@ let drawPileAEl = document.getElementById('drawPileA')
 let battleFieldAEl = document.getElementById('battleFieldA')
 let drawPileBEl = document.getElementById('drawPileB')
 let battleFieldBEl = document.getElementById('battleFieldB')
-
+let scoreEl = document.getElementById('score')
 let messageEl = document.getElementById('message')
 
 let startBtnEl = document.getElementById('startBtn')
@@ -52,6 +52,7 @@ takeCardsBtnEl.addEventListener("click", function() {
   shuffleDeck(drawPileA,drawPileB)
   unClickableTake()
   clickablePlay()
+  renderScore()
 })
 resetBtnEl.addEventListener("click", function() {
   init()
@@ -348,4 +349,7 @@ function unClickableTake() {
 function clickableTake() {
   takeCardsBtnEl.classList.add("hover","clickable")
   takeCardsBtnEl.disabled = false
+}
+function renderScore() {
+  scoreEl.innerHTML = `Captured: ${drawPileA.length}!`
 }
