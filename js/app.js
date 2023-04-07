@@ -263,10 +263,10 @@ function renderSoldiers(){
   if (battleFieldA.length === 1) {
     let soldierA = battleFieldA[0].title
     let soldierB = battleFieldB[0].title
-    battleFieldAEl.classList.add(soldierA,"animate__backInLeft")
-    battleFieldBEl.classList.add(soldierB,"animate__backInRight")
-    battleFieldAEl.classList.remove('outline','blank')
-    battleFieldBEl.classList.remove('outline','blank')
+    battleFieldAEl.classList.add(soldierA,"animate__flipInY")
+    battleFieldBEl.classList.add(soldierB,"animate__flipInY")
+    battleFieldAEl.classList.remove('back')
+    battleFieldBEl.classList.remove('back')
   }
 }
 function renderEmptySoldiers() {
@@ -274,8 +274,8 @@ function renderEmptySoldiers() {
   let soldierB = battleFieldB
   let soldierAImage = soldierA[0].title
   let soldierBImage = soldierB[0].title
-  battleFieldAEl.classList.add('outline','blank')
-  battleFieldAEl.classList.remove('shadow','lighterShadow','darkerShadow','animate__backInLeft',soldierAImage)
-  battleFieldBEl.classList.add('outline','blank')
-  battleFieldBEl.classList.remove('shadow','lighterShadow','darkerShadow','animate__backInRight',soldierBImage)
+  battleFieldAEl.classList.add('back')
+  battleFieldAEl.classList.remove('shadow','lighterShadow','darkerShadow','animate__flipInY',soldierAImage)
+  battleFieldBEl.classList.add('back')
+  battleFieldBEl.classList.remove('shadow','lighterShadow','darkerShadow','animate__flipInY',soldierBImage)
 }

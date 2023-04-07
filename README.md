@@ -6,7 +6,7 @@
 ### Theme - Pokemon
 
 ## Objective: 
-Create the card game "War" as a browser-based game
+Create the card game "War" as a browser-based game. The game of war is a simple card game that follows a defined game logic.
 
 ## To Play the Game:
 Click [here](https://pokebattlewar.netlify.app/) to play the game. [Here](https://docs.google.com/document/d/1FDr_7BSE_S3VJ1-ZaaZ_GNyVKIOpr0I7Nviz1j0aIv8/edit) is a link to my pseudocode
