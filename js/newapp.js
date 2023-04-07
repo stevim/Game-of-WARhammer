@@ -11,7 +11,7 @@ let battleFieldAEl = document.getElementById('battleFieldA')
 let drawPileBEl = document.getElementById('drawPileB')
 let battleFieldBEl = document.getElementById('battleFieldB')
 let hostageDeckEl = document.getElementById('hostageDeck')
-
+let messageEl = document.getElementById('message')
 
 let startBtnEl = document.getElementById('startBtn')
 let playCardsBtnEl = document.getElementById("playCardsBtn")
@@ -28,7 +28,7 @@ startBtnEl.addEventListener(`click`, function() {
 })
 playCardsBtnEl.addEventListener(`click`, function() {
   playCards()
-  renderPlayingDecks()
+  // renderPlayingDecks()
   renderSoldiers()
   // compareCards()
   playCardsBtnEl.disabled = true
@@ -43,7 +43,14 @@ takeCardsBtnEl.addEventListener(`click`, function() {
   console.log(drawPileA,drawPileB,battleFieldA,battleFieldB,hostageDeck)
 })
 resetBtnEl.addEventListener(`click`, function() {
-
+  init()
+  if (battleFieldA.length !== 0 && battleFieldB.length !== 0) {
+    renderEmptySoldiers()
+  }
+  resetGame()
+  startBtnEl.disabled = false
+  playCardsBtnEl.disabled = true
+  takeCardsBtnEl.disabled = true
 })
 startBtnEl.addEventListener(`mouseover`, function() {
   startBtnEl.classList.add('hover')
@@ -167,14 +174,13 @@ function playCards() {
 function compareCards() {
   if (battleFieldA[0].value > battleFieldB[0].value) {
     aWinsDuel()
-    // renderSoldiers()
   }
   else if (battleFieldA[0].value < battleFieldB[0].value) {
     bWinsDuel()
-    // renderSoldiers()
   }
   else {
     //War!!
+    messageEl.innerHTML = "War!"
     war()
     if (battleFieldA[0].value > battleFieldB[0].value) {
       let allHostages = drawPileA.concat(hostageDeck)
@@ -191,6 +197,7 @@ function compareCards() {
     else {
       //Double War!!
       debugger
+      messageEl.innerHTML = "Double War!"
       war()
       if(battleFieldA[0].value > battleFieldB[0].value) {
         let allHostages = drawPileA.concat(hostageDeck)
@@ -206,6 +213,7 @@ function compareCards() {
       }
       else {
         //Triple War!!
+        messageEl.innerHTML = "Triple War!"
         debugger
         console.log("Ceasefire! The War is over!")
         tieGame()
@@ -214,20 +222,22 @@ function compareCards() {
   }
 }
 function aWinsDuel() {
+  console.log(battleFieldA,battleFieldB)
   renderEmptySoldiers()
   console.log('A Wins Duel')
   const winnings = drawPileA.concat(battleFieldA,battleFieldB)
   drawPileA = winnings
   clearBattleField()
-  renderEmptyHostages
+  messageEl.innerHTML = "You won this battle!"
 }
 function bWinsDuel() {
+  console.log(battleFieldA,battleFieldB)  
   renderEmptySoldiers()
   console.log('B Wins Duel')  
   const winnings = drawPileB.concat(battleFieldA,battleFieldB)
   drawPileB = winnings
   clearBattleField()
-  renderEmptyHostages
+  messageEl.innerHTML = "You lost this battle!"
 }
 function supplyHostages() {
   if (drawPileA.length >= 3 && drawPileB.length >= 3) {
@@ -235,8 +245,6 @@ function supplyHostages() {
     let hostagesB = drawPileB.splice(0,3)
     let allHostages = hostageDeck.concat(hostagesA,hostagesB,battleFieldA,battleFieldB)
     hostageDeck = allHostages
-    renderHostages()
-    renderEmptySoldiers()
     clearBattleField()
   } 
   else if (drawPileA.length >= 3 && drawPileB.length < 3){
@@ -258,9 +266,9 @@ function supplyHostages() {
   }
 }
 function war() {
+  renderEmptySoldiers()
   console.log("War!")
   supplyHostages()
-  renderSoldiers()
   playCards()
 }
 function tieGame() {
@@ -272,83 +280,81 @@ function aWinsGame() {
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = true
+  messageEl.innerHTML = "Congratulions! You won the War!"
 }
 function bWinsGame() {
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = true
+  messageEl.innerHTML = "Better luck next time!"
 }
 function clearBattleField() {
   battleFieldA = []
   battleFieldB = []
 }
+function resetGame() {
+  drawPileA = []
+  drawPileB = []
+  battleFieldA = []
+  battleFieldB = []
+  hostageDeck = []
+}
 
 // render functions
 
-function renderPlayingDecks(){
-  if (drawPileA.length === 0) {
-    drawPileAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
-    drawPileAEl.classList.add('outline')
-  }
-  else if(drawPileA.length !== 0 && drawPileA.length < 12) {
-    drawPileAEl.classList.remove('shadow','outline','darkerShadow')
-    drawPileAEl.classList.add('lighterShadow','back-blue')
-  }
-  else if(drawPileA.length >= 6 && drawPileA.length < 24){
-    drawPileAEl.classList.remove('outline','lighterShadow','darkerShadow')
-    drawPileAEl.classList.add('shadow','back-blue')
-  }
-  else {
-    drawPileAEl.classList.remove('shadow','lighterShadow','outline')
-    drawPileAEl.classList.add('darkerShadow','back-blue')
-  }
+// function renderPlayingDecks(){
+//   if (drawPileA.length === 0) {
+//     drawPileAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
+//     drawPileAEl.classList.add('outline')
+//   }
+//   else if(drawPileA.length !== 0 && drawPileA.length < 12) {
+//     drawPileAEl.classList.remove('shadow','outline','darkerShadow')
+//     drawPileAEl.classList.add('lighterShadow','back-blue')
+//   }
+//   else if(drawPileA.length >= 6 && drawPileA.length < 24){
+//     drawPileAEl.classList.remove('outline','lighterShadow','darkerShadow')
+//     drawPileAEl.classList.add('shadow','back-blue')
+//   }
+//   else {
+//     drawPileAEl.classList.remove('shadow','lighterShadow','outline')
+//     drawPileAEl.classList.add('darkerShadow','back-blue')
+//   }
 
-  if (drawPileB.length === 0) {
-    drawPileBEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
-    drawPileBEl.classList.add('outline')
-  }
-  else if(drawPileB.length !== 0 && drawPileB.length < 12) {
-    drawPileBEl.classList.remove('shadow','outline','darkerShadow')
-    drawPileBEl.classList.add('lighterShadow','back-blue')
-  }
-  else if(drawPileB.length >= 6 && drawPileB.length < 24){
-    drawPileBEl.classList.remove('outline','lighterShadow','darkerShadow')
-    drawPileBEl.classList.add('shadow','back-blue')
-  }
-  else {
-    drawPileBEl.classList.remove('shadow','lighterShadow','outline')
-    drawPileBEl.classList.add('darkerShadow','back-blue')
-  }
-}
+//   if (drawPileB.length === 0) {
+//     drawPileBEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue')
+//     drawPileBEl.classList.add('outline')
+//   }
+//   else if(drawPileB.length !== 0 && drawPileB.length < 12) {
+//     drawPileBEl.classList.remove('shadow','outline','darkerShadow')
+//     drawPileBEl.classList.add('lighterShadow','back-blue')
+//   }
+//   else if(drawPileB.length >= 6 && drawPileB.length < 24){
+//     drawPileBEl.classList.remove('outline','lighterShadow','darkerShadow')
+//     drawPileBEl.classList.add('shadow','back-blue')
+//   }
+//   else {
+//     drawPileBEl.classList.remove('shadow','lighterShadow','outline')
+//     drawPileBEl.classList.add('darkerShadow','back-blue')
+//   }
+// }
 function renderSoldiers(){
-
   if (battleFieldA.length === 1) {
     let soldierA = battleFieldA[0].title
     let soldierB = battleFieldB[0].title
-    battleFieldAEl.classList.add(soldierA)
-    battleFieldBEl.classList.add(soldierB)
+    battleFieldAEl.classList.add(soldierA,"animate__backInLeft")
+    battleFieldBEl.classList.add(soldierB,"animate__backInRight")
     battleFieldAEl.classList.remove('outline','blank','back-blue')
     battleFieldBEl.classList.remove('outline','blank','back-blue')
 
   }
 }
 function renderEmptySoldiers() {
-
   let soldierA = battleFieldA
   let soldierB = battleFieldB
   let soldierAImage = soldierA[0].title
   let soldierBImage = soldierB[0].title
   battleFieldAEl.classList.add('outline','blank')
-  battleFieldAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue',soldierAImage)
+  battleFieldAEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue','animate__backInLeft',soldierAImage)
   battleFieldBEl.classList.add('outline','blank')
-  battleFieldBEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue',soldierBImage)
-
-}
-function renderHostages() {
-  hostageDeckEl.classList.add('back-blue','lighterShadow')
-  hostageDeckEl.classList.remove('outline')
-}
-function renderEmptyHostages() {
-  hostageDeckEl.classList.add('outline','blank')
-  hostageDeckEl.classList,renderEmptyHostages('back-blue','lighterShadow')
+  battleFieldBEl.classList.remove('shadow','lighterShadow','darkerShadow','back-blue','animate__backInRight',soldierBImage,)
 }

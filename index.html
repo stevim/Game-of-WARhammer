@@ -13,25 +13,34 @@
   <script defer src="./js/newapp.js"></script>
   <title>Document</title>
 </head>
-<body>
-  <div class="header">
-    WAR!!
+  <body>
+  <div class="background">
+    <div class="header">
+      Pokebattle!
+    </div>
+    <div class="container1">
+
+      <div id="battleFieldB" class="card normal outline animate__animated"></div>
+    </div>
+    <div class="container2">
+      <div id="battleFieldA" class="card normal outline animate__animated"></div>
+    </div>
+    <div class="bottomBar">
+
+      <div id="message">
+        Welcome
+      </div>
+      <div class="btns">
+        <div class="btnContainer">
+          <button id="startBtn" class="btn">Start</button>
+          <button id="playCardsBtn" class="btn">Play</button>
+        </div>
+        <div class="btnContainer">
+          <button id="resetBtn" class="btn">Reset</button>
+          <button id="takeCardsBtn" class="btn">Take</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container1">
-    <div id="drawPileA" class="card xlarge back-blue"></div>
-  </div>
-  <div class="container2">
-    <div id="battleFieldA" class="card xlarge outline animate__animated animate__flipInY"></div>
-    <div id="battleFieldB" class="card xlarge outline animate__animated animate__flipInY"></div>
-  </div>
-  <div class="container3">
-    <div id="drawPileB" class="card xlarge back-blue"></div>
-  </div>
-  <div class="btnContainer">
-    <button id="startBtn" class="btn">Start</button>
-    <button id="playCardsBtn" class="btn">Play</button>
-    <button id="takeCardsBtn" class="btn">Take</button>
-    <button id="resetBtn" class="btn">Reset</button>
-  </div>
-</body>
+  </body>
 </html>

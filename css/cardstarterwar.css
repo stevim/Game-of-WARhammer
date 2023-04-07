@@ -30,8 +30,8 @@
     font-size: 12px; }
   .card.large {
     font-size: 26px; }
-  .card.xlarge {
-    font-size: 50px; }
+  .card.normal {
+    font-size: 30px; }
   .card.no-border {
     border: 0; }
   .card.shadow {
