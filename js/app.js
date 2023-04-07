@@ -9,7 +9,7 @@ let startingDeck = []
 const battleMusic = new Audio("../battlemusic.mp3")
 function playMusic() {
   battleMusic.play()
-  battleMusic.volume = 0.005
+  battleMusic.volume = 0.01
 }
 function stopMusic() {
   battleMusic.pause()
@@ -33,10 +33,13 @@ let btnEl = document.querySelectorAll('.btn')
 startBtnEl.addEventListener("click", function() {
   shuffleDeck(startingDeck)
   handleStart()
+  battleFieldAEl.classList.add('back','animate__backInRight')
+  battleFieldBEl.classList.add('back','animate__backInLeft')
   startBtnEl.classList.remove("hover")
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = false
   playMusic()
+
 })
 playCardsBtnEl.addEventListener("click", function() {
   messageEl.innerHTML = "To Battle!"
@@ -282,6 +285,7 @@ function aWinsGame() {
   takeCardsBtnEl.disabled = true
   messageEl.innerHTML = "Congratulions! You won the War!"
   stopMusic()
+  confetti.start(5000)
 }
 function bWinsGame() {
   startBtnEl.disabled = true
