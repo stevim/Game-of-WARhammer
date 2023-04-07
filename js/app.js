@@ -19,36 +19,67 @@ let takeCardsBtnEl = document.getElementById("takeCardsBtn")
 let resetBtnEl = document.getElementById('resetBtn')
 let btnEl = document.querySelectorAll('.btn')
 
-startBtnEl.addEventListener(`click`, function() {
+//buttons
+startBtnEl.addEventListener("click", function() {
   shuffleDeck(startingDeck)
   handleStart()
+  startBtnEl.classList.remove("hover")
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = false
 })
-playCardsBtnEl.addEventListener(`click`, function() {
+playCardsBtnEl.addEventListener("click", function() {
   playCards()
   renderSoldiers()
+  playCardsBtnEl.classList.remove('hover')
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = false
 })
-takeCardsBtnEl.addEventListener(`click`, function() {
+takeCardsBtnEl.addEventListener("click", function() {
   compareCards()
   shuffleDeck(drawPileA,drawPileB)
+  takeCardsBtnEl.classList.remove('hover')
   takeCardsBtnEl.disabled = true
   playCardsBtnEl.disabled = false
 })
-resetBtnEl.addEventListener(`click`, function() {
+resetBtnEl.addEventListener("click", function() {
   init()
   if (battleFieldA.length !== 0 && battleFieldB.length !== 0) {
     renderEmptySoldiers()
   }
   resetGame()
+  playCardsBtnEl.classList.remove("hover","back")
+  takeCardsBtnEl.classList.remove("hover","back")
   startBtnEl.disabled = false
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = true
 })
+startBtnEl.addEventListener("mouseover", function() {
+  startBtnEl.classList.add("hover")
+})
+playCardsBtnEl.addEventListener("mouseover", function() {
+  playCardsBtnEl.classList.add("hover")
+})
+takeCardsBtnEl.addEventListener("mouseover", function() {
+  takeCardsBtnEl.classList.add("hover")
+})
+resetBtnEl.addEventListener("mouseover", function() {
+  resetBtnEl.classList.add("hover")
+})
+startBtnEl.addEventListener("mouseout", function() {
+  startBtnEl.classList.remove("hover")
+})
+playCardsBtnEl.addEventListener("mouseout", function() {
+  playCardsBtnEl.classList.remove("hover")
+})
+takeCardsBtnEl.addEventListener("mouseout", function() {
+  takeCardsBtnEl.classList.remove("hover")
+})
+resetBtnEl.addEventListener("mouseout", function() {
+  resetBtnEl.classList.remove("hover")
+})
 
 playCardsBtnEl.disabled = true
+takeCardsBtnEl.disabled = true
 init()
 function init() {
   startingDeck = [
@@ -255,6 +286,7 @@ function resetGame() {
   battleFieldA = []
   battleFieldB = []
   hostageDeck = []
+  messageEl.innerHTML = "Welcome"
 }
 
 // render functions
