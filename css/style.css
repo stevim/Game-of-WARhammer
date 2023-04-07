@@ -63,7 +63,7 @@
 
 
 .bottomBar {
-  margin-top: 25px;
+  margin-top: 42px;
   display: flex;
   justify-content: space-between;
 }
@@ -75,7 +75,7 @@
   align-items: center;
   font-size: 28px;
   margin-left: 7%;
-  color: rgb(60, 57, 57);
+  color: white;
 }
 
 .btnContainer {
@@ -96,10 +96,11 @@
   font-family: 'Press Start 2P', cursive;
   font-size: 30px;
   color: white;
-  background-color: #28b588;
+  background-color: #589098;
   font-weight: bold;
-  border: 2px solid #28b588;
+  border: 2px solid #589098;
   height: 75px;
   width: 200px;
   padding: 0 30px;
+  border-radius: 20px;
 }

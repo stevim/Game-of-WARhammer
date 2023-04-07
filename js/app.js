@@ -39,12 +39,12 @@ startBtnEl.addEventListener("click", function() {
   playMusic()
 })
 playCardsBtnEl.addEventListener("click", function() {
+  messageEl.innerHTML = "To Battle!"
   playCards()
   renderSoldiers()
   playCardsBtnEl.classList.remove('hover')
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = false
-  messageEl.innerHTML = "To Battle!"
 })
 takeCardsBtnEl.addEventListener("click", function() {
   compareCards()
@@ -274,18 +274,21 @@ function tieGame() {
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = true
+  stopMusic()
 }
 function aWinsGame() {
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = true
   messageEl.innerHTML = "Congratulions! You won the War!"
+  stopMusic()
 }
 function bWinsGame() {
   startBtnEl.disabled = true
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = true
   messageEl.innerHTML = "Better luck next time!"
+  stopMusic()
 }
 function clearBattleField() {
   battleFieldA = []
