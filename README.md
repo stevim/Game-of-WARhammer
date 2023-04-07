@@ -15,7 +15,7 @@ Motivation:
 War was one of the first card games I ever learned, which makes it one of the first games I ever learned period. I am testing myself to be able to recreate this classic card game.
 
 Attributions:
-The [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) method was used to shuffle my deck. The code in [this](/css/cardstarterwar.css) file as well as [this](/images) images folder was provided by the General Assembly SEI Course.
+The [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) method was used to shuffle my deck. The code in [this](/css/cardstarterwar.css) file as well as [this](/images) images folder was provided by the General Assembly SEI Course. The [Pokemon](https://fonts.google.com/specimen/Press+Start+2P) font was provided by Google Fonts
 
 Technology Implemented:
 Javacscript,

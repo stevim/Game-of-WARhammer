@@ -106,7 +106,6 @@ function init() {
     {title: "cK", value: 13}, 
   ]
 }
-
 //on click functions
 function shuffleDeck(arr) {
   let m = arr.length, t, i
