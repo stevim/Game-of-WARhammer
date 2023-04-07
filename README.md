@@ -1,4 +1,4 @@
-![image](/images/screenshot.png)
+![image](/images/pokebattlepic.png)
 
 
 Game of War - Card Game
