@@ -304,6 +304,8 @@ function resetGame() {
   battleFieldB = []
   hostageDeck = []
   messageEl.innerHTML = "Welcome"
+  battleFieldAEl.classList.remove("back")
+  battleFieldBEl.classList.remove("back")
 }
 // render functions
 function renderSoldiers(){
