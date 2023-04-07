@@ -35,8 +35,9 @@ startBtnEl.addEventListener("click", function() {
   handleStart()
   battleFieldAEl.classList.add('back','animate__backInRight')
   battleFieldBEl.classList.add('back','animate__backInLeft')
-  unClickableStart()
-  clickablePlay()
+  startBtnEl.classList.remove("hover")
+  startBtnEl.disabled = true
+  playCardsBtnEl.disabled = false
   playMusic()
 
 })
@@ -44,14 +45,16 @@ playCardsBtnEl.addEventListener("click", function() {
   messageEl.innerHTML = "To Battle!"
   playCards()
   renderSoldiers()
-  unClickablePlay()
-  clickableTake()
+  playCardsBtnEl.classList.remove('hover')
+  playCardsBtnEl.disabled = true
+  takeCardsBtnEl.disabled = false
 })
 takeCardsBtnEl.addEventListener("click", function() {
   compareCards()
   shuffleDeck(drawPileA,drawPileB)
-  unClickableTake()
-  clickablePlay()
+  takeCardsBtnEl.classList.remove('hover')
+  takeCardsBtnEl.disabled = true
+  playCardsBtnEl.disabled = false
 })
 resetBtnEl.addEventListener("click", function() {
   init()
@@ -59,9 +62,8 @@ resetBtnEl.addEventListener("click", function() {
     renderEmptySoldiers()
   }
   resetGame()
-  startBtnEl.classList.add("clickable")
-  playCardsBtnEl.classList.remove("hover","back","clickable")
-  takeCardsBtnEl.classList.remove("hover","back","clickable")
+  playCardsBtnEl.classList.remove("hover","back")
+  takeCardsBtnEl.classList.remove("hover","back")
   startBtnEl.disabled = false
   playCardsBtnEl.disabled = true
   takeCardsBtnEl.disabled = true
@@ -329,23 +331,19 @@ function unClickableStart() {
   startBtnEl.classList.remove("hover","clickable")
   startBtnEl.disabled = true
 }
-function clickableStart() {
-  startBtnEl.classList.add("hover","clickable")
+function ClickableStart() {
+  startBtnEl.classList.add("hover")
   startBtnEl.disabled = false
 }
 function unClickablePlay() {
-  playCardsBtnEl.classList.remove("hover","clickable")
-  playCardsBtnEl.disabled = true
+
 }
-function clickablePlay() {
-  playCardsBtnEl.classList.add("hover","clickable")
-  playCardsBtnEl.disabled = false
+function ClickablePlay() {
+  
 }
 function unClickableTake() {
-  takeCardsBtnEl.classList.remove("hover","clickable")
-  takeCardsBtnEl.disabled = true
+
 }
-function clickableTake() {
-  takeCardsBtnEl.classList.add("hover","clickable")
-  takeCardsBtnEl.disabled = false
+function ClickableTake() {
+  
 }
