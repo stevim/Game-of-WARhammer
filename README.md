@@ -20,12 +20,13 @@ War was one of the first card games I ever learned, which makes it one of the fi
 The [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) method was used to shuffle my deck. The code in [this](/css/cardstarterwar.css) file as well as [this](/images) images folder was provided by the General Assembly SEI Course. The [Pokemon](https://fonts.google.com/specimen/Press+Start+2P) font was provided by Google Fonts. The classic [Pokemon card back](/images/backs/pokemonCard.png) was created by Nintendo. The audio file was provided [here](https://downloads.khinsider.com/game-soundtracks/album/pokemon-game-boy-pok-mon-sound-complete-set-play-cd/1-15.%2520Battle%2520%2528Vs.%2520Trainer%2529.mp3). Favicon was drawn by [Nikita Golubev](https://www.flaticon.com/authors/nikita-golubev).
 
 ## Technology Implemented:
-Javascript,
-CSS,
-HTML,
-Git,
-animate.css
+* Javascript
+* CSS
+* HTML
+* Git
+* animate.css
 
 ## Icebox(Next Steps):
-Render additional soldiers during 'war', Add additional CSS styling to acommodate different window sizes
+*Render additional soldiers during 'war'
+* Add additional CSS styling to acommodate different window sizes
 
